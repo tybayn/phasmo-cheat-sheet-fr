@@ -1,11 +1,11 @@
-<div class="wiki_title accordian" onclick="accordian(this)">Hunts</div>
+<div class="wiki_title accordian" onclick="accordian(this)">Chasses</div>
 <div class="wiki_details" style="height: 0px;">
-    <h3>Flickering</h3>
-    <div class="text">During a hunt, ghosts will flicker in and out of existance, alternating between visible and invisible multiple times every few seconds. There are a couple of ghosts that can be identified by their flickering during a hunt: (1) an Oni will be more visible during a hunt and (2) the Phantom will be invisible for longer periods of time.</div>
-    <div class="text">Below you can see examples of the flicker timing of Phantom, Oni, and all other ghosts.</div>
+    <h3>Vacillement</h3>
+    <div class="text">Au cours d'une chasse, les entités apparaîtront et disparaîtront, alternant entre visible et invisible plusieurs fois toutes les quelques secondes. Il y a quelques entités qui peuvent être identifiés par leur clignottement pendant une chasse : (1) un Oni sera plus visible pendant une chasse et (2) le Fantôme sera invisible pendant de plus longues périodes.</div>
+    <div class="text">Ci-dessous, vous pouvez voir des exemples de synchronisation de clignottement de Fantôme, Oni et de toutes les autres entités.</div>
     <div class="wiki-flex">
         <div id="phantom-flicker" class="wiki-img-block">
-            <div id="flicker-ghost-name">Phantom</div>
+            <div id="flicker-ghost-name">Fantôme</div>
             <div id="ghost-flicker">
                 <img class="flicker-img" src="imgs/flicker_ghost.png">
             </div>
@@ -26,185 +26,185 @@
 
 </div>
 
-<div class="wiki_title accordian" onclick="accordian(this)">Monkey Paw</div>
+<div class="wiki_title accordian" onclick="accordian(this)">Patte de singe</div>
 <div class="wiki_details" style="height: 0px;">
     <h3>Wishes</h3>
     <div class="text">
-        <b>"I wish to see the ghost"</b>
+        <b>"Je souhaite voir le fantôme"</b>
         <ul>
-            <li>Pro: Ghost appears at its current location</li>
-            <li>Con: After the event, a hunt will start and player vision is darkened for the duration of the event and hunt</li>
+            <li>(+) L'entité apparaît à son emplacement actuel</li>
+            <li>(-) Après l'événement, une chasse commencera et la vision du joueur sera obscurcie pendant toute la durée de l'événement et de la chasse.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for activity"</b>
+        <b>"Je souhaite avoir de l'activité"</b>
         <ul>
-            <li>Pro: Doubles all ghost activity for 2 min</li>
-            <li>Con: Breaker set to broken and front door locked for 2 min</li>
+            <li>(+) Double toute l'activité de l'entité pendant 2 minutes</li>
+            <li>(-) Le disjoncteur se coupe et la porte d'entrée se verrouille pendant 2 minutes</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for sanity"</b>
+        <b>"Je souhaite avoir de la santé mentale"</b>
         <ul>
-            <li>Pro: Averages everyone's sanity to 50%</li>
-            <li>Con: Sets ghost's favorite room to a random room and increases current sanity drain by 50%</li>
+            <li>(+) Règle chaque joueur à 50% de santé mentale</li>
+            <li>(-) La perte de santé mentale passive sera multipliée par 1,5 pour le reste du contrat, et la pièce favorite de l'entité sera définie sur une pièce aléatoire.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish the ghost was trapped"</b>
+        <b>"Je souhaite emprisonner le fantôme"</b>
         <ul>
-            <li>Pro: Ghost locked in its room for 1 min where it cannot hunt, roam, or do abilities</li>
-            <li>Con: Locks doors in the players room and hunt starts after the 1 min period (25% doors will unlock after grace period)</li>
+            <li>(+) Téléporte l'entité dans sa pièce favorite et verrouille toutes ses portes pendant 1 minute. Pendant cette période, l'entité ne peut pas chasser, errer, ou utiliser de compétences.</li>
+            <li>(-) Verrouille toutes les portes de la pièce actuelle du joueur pendant 1 minute. Après cette période, toutes les portes se déverrouilleront et l'entité démarrera une chasse maudite. Il y a 25% de chances que les portes ne se déverrouillent qu'après la période de grâce.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for life"</b>
+        <b>"Je souhaite réanimer mon ami"</b>
         <ul>
-            <li>Pro: Revive a dead player</li>
-            <li>Con: 50% chance that the wishing player will die</li>
+            <li>(+) Ressuscite un joueur décédé</li>
+            <li>(-) Le joueur qui a fait le vœu a 50% de chances de décéder</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish to be safe"</b>
+        <b>"Je souhaite être en sécurité"</b>
         <ul>
-            <li>Pro: Unblocks the nearest blocked hiding spot</li>
-            <li>Con: Breaks the light in that room and ghost is able to sense or hear the player from any distance</li>
+            <li>(+) Débloque la cachette bloquée la plus proche</li>
+            <li>(-) Les lumières de la pièce actuelle du joueur se briseront, et pour le reste du contrat l'entité pourra entendre le joueur qui a fait le vœu et détecter ses appareils électroniques actifs à n'importe quelle distance.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish to leave"</b>
+        <b>"Je souhaite partir"</b>
         <ul>
-            <li>Pro: Unlocks all exit doors (works during hunts)</li>
-            <li>Con: Player slowness and darkened vision for 5 secs</li>
+            <li>(+) Déverrouille toutes les portes de sortie à tout moment, incluant pendant les chasses.</li>
+            <li>(-) La vitesse du joueur sera réduite avant de revenir lentement sur 5 secondes. Sa vision sera aussi réduite pendant cette durée.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for knowledge"</b>
+        <b>"Je souhaite avoir de l'information"</b>
         <ul>
-            <li>Pro: Removes 1 incorrect evidence from the journal and crosses out associated ghosts</li>
-            <li>Con: Starts a hunt and player vision and audio is reduced the rest of that round</li>
+            <li>(+) Supprime 1 Preuve incorrecte et les types d'entité correspondants du journal du joueur qui a fait le vœu.</li>
+            <li>(-) L'entité démarrera alors une chasse près du joueur qui a fait le vœu, et ce dernier aura un son étouffé et une vision réduite jusqu'au décès ou à la fin de la partie.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for [weather]"</b>
+        <b>"Je souhaite avoir [météo]"</b>
         <ul>
-            <li>Pro: Changes the weather to the one specified</li>
-            <li>Con: Drops sanity by 25%</li>
+            <li>(+) Change la météo comme vous le souhaitez.</li>
+            <li>(-) Perte de 25% de santé mentale.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"I wish for anything"</b>
+        <b>"Je souhaite n'importe quoi"</b>
         <ul>
-            <li>Randomly chooses one of the above wishes</li>
+            <li>Exauce aléatoirement l'un des vœux (inutilisés) ci-dessus.</li>
         </ul>
     </div>
 </div>
 
-<div class="wiki_title accordian" onclick="accordian(this)">Oujia Board</div>
+<div class="wiki_title accordian" onclick="accordian(this)">Planche de Oujia</div>
 <div class="wiki_details" style="height: 0px;">
     <h3>Questions</h3>
     <div class="text">
-        <b>"Where are you?"</b>
+        <b>"Où êtes-vous ?"</b>
         <ul>
-            <li>Sanity Cost: 50%</li>
-            <li>Gives the current room of the ghost (not the favorite room)</li>
+            <li>Perte de santé mentale: 50%</li>
+            <li>Renvoie la pièce dans laquelle se trouve actuellement l'entité (ne donne pas sa pièce favorite).</li>
         </ul>
     </div>
     <div class="text">
-        <b>Are you here? / Are you close?"</b>
+        <b>"Êtes-vous ici ?" / "Êtes-vous proche ?"</b>
         <ul>
-            <li>Sanity Cost: 20%</li>
-            <li>Tells if the ghost is in the same room as the player</li>
+            <li>Perte de santé mentale: 20%</li>
+            <li>Indique simplement si l'entité est dans la même pièce que la personne qui pose la question.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Where is the bone?"</b>
+        <b>"Où est l'os ?"</b>
         <ul>
-            <li>Sanity Cost: 50%</li>
-            <li>Gives the room of the bone</li>
+            <li>Perte de santé mentale: 50%</li>
+            <li>Donne le nom de la pièce où se trouve l'os.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Hide and seek?"</b>
+        <b>"(Voulez-vous jouer à) cache-cache ?"</b>
         <ul>
-            <li>Sanity Cost: 0% (breaks board)</li>
-            <li>Counts down from 5 and starts a hunt</li>
+            <li>Perte de santé mentale: 0% (breaks board)</li>
+            <li>La Planche ouija initiera un compte à rebours de 5 à 0, avant de se briser et de démarrer une chasse maudite.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Do you respond to everyone?"</b>
+        <b>"Répondez-vous à tout le monde ?"</b>
         <ul>
-            <li>Sanity Cost: 20%</li>
-            <li>Replies with if the ghosts wants to be alone when using the spirit box</li>
+            <li>Perte de santé mentale: 20%</li>
+            <li>Indiquera si l'entité répond aux personnes seules ou à tout le monde en utilisant la Spirit Box.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"How old are you?"</b>
+        <b>"Quel âge avez-vous ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>Returns the current age of the ghost. If the number changes, the ghost is a Thaye</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>Indique l'âge actuel de l'entité. Si celui-ci change, c'est un Thayé.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"When did you die?"</b>
+        <b>"Quand êtes-vous mort ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>Returns a random number</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>Indique un nombre généré aléatoirement entre 50 et 1000 ans.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"What is my sanity?"</b>
+        <b>"Quelle est ma santé mentale ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>'Healthy' (Sanity > 80%), 'Good' (60-80%), 'Average' (40-60%), 'Bad' (20-40%), 'Awful' (&lt;20%)</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>'Saine' (Sanity > 80%), 'Bonne' (60-80%), 'Moyenne' (40-60%), 'Mauvaise' (20-40%), 'Affreuse' (&lt;20%)</li>
         </ul>
     </div>
     <div class="text">
         <b>"How insane am I?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
+            <li>Perte de santé mentale: 5%</li>
             <li>'Not Very' (Sanity > 50%), 'Very' (25-50%), 'Insane' (&lt;25%)</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Am I insane?"</b>
+        <b>"Suis-je fou ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>'No' (Sanity > 90%), 'Maybe' (20-90%), 'Yes' (&lt;20%)</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>'Non' (Sanity > 90%), 'Peut-être' (20-90%), 'Oui' (&lt;20%)</li>
         </ul>
     </div>
     <div class="text">
-        <b>"How did you die?"</b>
+        <b>"Comment êtes-vous mort ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>Returns the ghost's cause of death</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>Indique la cause du décès de l'entité.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"How do you feel?"</b>
+        <b>"Comment allez-vous ?"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>Returns a randomly selected emotion</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>Retourne une émotion aléatoire.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Why are you here?"</b>
+        <b>"Que voulez-vous ?""</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>Returns a randomly selected reason</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>Retourne une raison aléatoire.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Knock Knock"</b>
+        <b>"Toc Toc"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
-            <li>"Whos there"</li>
+            <li>Perte de santé mentale: 5%</li>
+            <li>"Qui est là ?"</li>
         </ul>
     </div>
     <div class="text">
         <b>"Marco"</b>
         <ul>
-            <li>Sanity Cost: 5%</li>
+            <li>Perte de santé mentale: 5%</li>
             <li>"Polo"</li>
         </ul>
     </div>
@@ -213,48 +213,48 @@
 <div class="wiki_title accordian" onclick="accordian(this)">Spirit Box</div>
 <div class="wiki_details" style="height: 0px;">
     <div class="text">
-        <b>Aggression Questions:</b><br>
-        <p>The following questions can be asked to return a randomly chosen "aggresive" response</p>
+        <b>Questions sur l'agressivité :</b><br>
+        <p>Les questions suivantes peuvent être posées pour renvoyer une réponse "agressive" choisie au hasard</p>
         <ul>
-            <li>"What do you want?"</li>
-            <li>"Why are you here?"</li>
+            <li>"Que voulez-vous ?"</li>
+            <li>"Pourquoi êtes-vous ici ?"</li>
             <li>"Are you angry?"</li>
-            <li>"Do you want us to leave?"</li>
-            <li>"Are you friendly?"</li>
-            <li>"Are you dangerous?"</li>
+            <li>"Devrions-nous partir ?"</li>
+            <li>"Êtes-vous amical ?"</li>
+            <li>"Voulez-vous nous blesser ?"</li>
         </ul>
-        Responses:
+        Réponses :
         <ul>
             <li>"Kill", "Death", "Die", "Hate", "Hurt", "Attack"</li>
         </ul>
     </div>
     <div class="text">
-        <b>Location Questions:</b><br>
-        <p>The following questions can be asked to indicate how close you are to ghost and if the ghost is in the same room</p>
+        <b>Questions sur l'emplacement:</b><br>
+        <p>Les questions suivantes peuvent être posées pour indiquer à quel point vous êtes proche du fantôme et si le fantôme se trouve dans la même pièce.</p>
         <ul>
-            <li>"Where are you?"</li>
-            <li>"Are you close?"</li>
-            <li>"Give us a sign."</li>
-            <li>"Are you here?"</li>
-            <li>"Is anybody here?"</li>
-            <li>"What is your location?"</li>
+            <li>"Où êtes-vous ?"</li>
+            <li>"Êtes-vous proche ?"</li>
+            <li>"Donnez-nous un signe."</li>
+            <li>"Êtes-vous ici ?"</li>
+            <li>"Y a-t-il un fantôme ici ?"</li>
+            <li>"Quel est votre emplacement ?"</li>
         </ul>
-        Responses:
+        Réponses :
         <ul>
-            <li>Within 3 meters:<br>"(I'm) here", "I'm close", "(I'm) behind you"</li>
-            <li>In same room, but further than 3 meters:<br>"Next to you", "Away", "Far"</li>
+            <li>À moins de 3 mètres :<br>"(I'm) here", "I'm close", "(I'm) behind you"</li>
+            <li>Entre 3 et 5 mètres (le cas échéant) :<br>"Next to you", "Away", "Far"</li>
         </ul>
     </div>
     <div class="text">
-        <b>Age Questions:</b><br>
-        <p>The following questions can be asked to return an age (not correlated to ghost model)</p>
+        <b>Questions sur l'âge:</b><br>
+        <p>Les questions suivantes peuvent être posées pour renvoyer un âge (non corrélé au modèle fantôme)</p>
         <ul>
-            <li>"How old are you?"</li>
-            <li>"How young are you?"</li>
-            <li>"What is your age?"</li>
-            <li>"Are you old?"</li>
+            <li>"Quel âge avez-vous ?"</li>
+            <li>"Êtes-vous un enfant ?"</li>
+            <li>"Êtes-vous vieux ?""</li>
+            <li>"Êtes-vous jeune ?"</li>
         </ul>
-        Responses:
+        Réponses :
         <ul>
             <li>"Old", "Young"</li>
         </ul>
@@ -262,20 +262,20 @@
 </div>
 
 <!-- Tarot Card Wiki Contributed by svenjaun (2023-09-07) -->
-<div class="wiki_title accordian" onclick="accordian(this)">Tarot Cards</div>
+<div class="wiki_title accordian" onclick="accordian(this)">Cartes de tarot</div>
 <div class="wiki_details" style="height: 0px;">
-    <h3>Tarot Cards</h3>
-    <div class="text">Tarot cards can be picked up, and you can draw one card at a time.</div>
-    <div class="text">Each Tarot card deck contains 10 randomly generated cards.</div>
+    <h3>Cartes de tarot</h3>
+    <div class="text">Les cartes de tarot peuvent être récupérées et tirer ensuite une carte à la fois.</div>
+    <div class="text">Chaque jeu de cartes Tarot contient 10 cartes générées aléatoirement.</div>
     <br />
     <hr>
 
     <div class="text">
         <p><b>The Tower</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/tower.webp">
-        <p>Causes an interaction and doubles all ghost activity for 20 seconds.</p>
+        <p>Provoque une interaction et double toute activité paranormale pendant 20 secondes.</p>
         <ul class="text">
-            <li>20% Draw Chance</li>
+            <li>20% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -284,14 +284,14 @@
     <div class="text">
         <p><b>The Wheel of Fortune</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/wheeloffortune.webp">
-        <p>The player who draws the card will experience either a gain or loss of sanity, depending on the burn color of the card.</p>
+        <p>Le joueur individuel gagne 25% de santé mentale si la Carte brûle en vert, ou perd 25% de santé mentale si la Carte brûle en rouge.</p>
         <p>
             <span class="square green"></span>Green burn: 25% Sanity gain
             <br>
             <span class="square red"></span>Red burn: 25% Sanity loss
         </p>
         <ul class="text">
-            <li>20% Draw Chance</li>
+            <li>20% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -300,11 +300,11 @@
     <div class="text">
         <p><b>The Fool</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/fool.webp">
-        <p>No effect is applied when drawing this card.</p>
-        <p class="smaller-text">Randomly selects another card to appear as, before turning into The Fool as it burns.</p>
+        <p>Aucun effet n'est appliqué lors du tirage de cette Carte.</p>
+        <p class="smaller-text">Sélectionne aléatoirement une autre Carte (avec des chances égales) pour apparaître comme, avant de se transformer en The Fool pendant qu'elle brûle.</p>
         <ul class="text">
-            <li>17% Draw Chance</li>
-            <li>(100% during hunts)</li>
+            <li>17% de chance d'être piochée</li>
+            <li>(100% pendant une chasse)</li>
         </ul>
     </div>
 
@@ -313,9 +313,9 @@
     <div class="text">
         <p><b>The Devil</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/devil.webp">
-        <p>Triggers a Ghost Event towards the nearest player to the ghost.</p>
+        <p> Déclenche un événement paranormal vers le joueur le plus proche de l'entité.</p>
         <ul class="text">
-            <li>10% Draw Chance</li>
+            <li>10% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -324,9 +324,9 @@
     <div class="text">
         <p><b>Death</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/death.webp">
-        <p>Triggers a cursed hunt.</p>
+        <p> Déclenche une chasse maudite.</p>
         <ul class="text">
-            <li>10% Draw Chance</li>
+            <li>10% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -335,10 +335,10 @@
     <div class="text">
         <p><b>The Hermit</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/hermit.webp">
-        <p>Teleports the ghost back to its ghost room and traps it there for 1 minute. </p>
-        <p class="smaller-text">This does not affect hunts and ghost events.</p>
+        <p>Téléporte l'entité vers sa pièce hantée et la piège dedans pendant 1 minute.</p>
+        <p class="smaller-text"> Cela n'affecte pas les chasses et les événements paranormaux.</p>
         <ul class="text">
-            <li>10% Draw Chance</li>
+            <li>10% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -347,9 +347,9 @@
     <div class="text">
         <p><b>The Sun</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/sun.webp">
-        <p>The player who draws the card will have their sanity fully restored to 100%</p>
+        <p>Restaure complètement (à 100%) la santé mentale du joueur qui la picohe.</p>
         <ul class="text">
-            <li>5% Draw Chance</li>
+            <li>5% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -358,9 +358,9 @@
     <div class="text">
         <p><b>The Moon</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/moon.webp">
-        <p>The player who draws the card will have their sanity instantly set to 0%.</p>
+        <p>Réduit instantanément la santé mentale du joueur qui la pioche à 0%.</p>
         <ul class="text">
-            <li>5% Draw Chance</li>
+            <li>5% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -369,10 +369,10 @@
     <div class="text">
         <p><b>The High Priestess</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/highpriestess.webp">
-        <p>Revives a randomly chosen dead player at their corpse. </p>
-        <p class="smaller-text">If no one is currently dead, it will revive the next player who dies. Multiple cards do not stack.<br>(A player cannot die twice in the same hunt)</p>
+        <p>Ressuscite un joueur décédé choisi aléatoirement à son cadavre.</p>
+        <p class="smaller-text">Si personne n'est actuellement décédé, elle ressuscitera le prochain joueur qui décède. Plusieurs Cartes ne se cumulent pas. <br>(Un joueur ne peut pas mourrir deux fois au cour de la même chasse)</p>
         <ul class="text">
-            <li>2% Draw Chance</li>
+            <li>2% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -381,10 +381,10 @@
     <div class="text">
         <p><b>The Hanged Man</b></p>
         <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/hangedman.webp">
-        <p>Instantly kills the player.<br></p>
-        <p class="smaller-text">If 'Friendly Ghost' custom difficulty option is turned on, this will always turn into "The Fool".</p>
+        <p>Tue instantanément le joueur.<br></p>
+        <p class="smaller-text">Il est impossible de tirer la vraie version de cette Carte si l'option de difficulté personnalisée 'Entité amicale' est activée. Seule la version The Fool peut être tirée.</p>
         <ul class="text">
-            <li>1% Draw Chance</li>
+            <li>1% de chance d'être piochée</li>
         </ul>
     </div>
 
@@ -393,69 +393,69 @@
 <div class="wiki_title accordian" onclick="accordian(this)">XP Grinding</div>
 <div class="wiki_details" style="height: 0px;">
     <div class="text">
-        <p><b>Current Strat: x12.97 WoodWind</b></p>
-        <p><b>Strategy:</b></p>
+        <p><b>Stratégie actuelle : x12.97 WoodWind</b></p>
+        <p><b>Stratégie:</b></p>
         <p>
-            The goal of this strategy is to go in long enough to survive a single hunt (2 if you value correctness over number of attempts) and leave. 
-            It requires a decent understanding of ghost behaviour during hunts and the ability to loop a ghost. This strat is done ideally with 2+ players,
-            but it is possible to do in single player.
+            Le but de cette stratégie est d'entrer suffisamment longtemps pour survivre à une seule chasse (2 si vous accordez de l'importance à l'exactitude plutôt qu'au nombre de tentatives) et de repartir.
+            Cela nécessite une bonne compréhension du comportement des fantômes pendant les chasses et la capacité de boucler un fantôme. Cette stratégie se fait idéalement à 2+ joueurs,
+            mais c'est possible de le faire en solo.
         </p>
         <p>
-            You will want to equip a loadout that at a minimum has incense (I prefer Tier 1 so the ghost will run away and not hang around), ignitors,
-            salt (preferably tier 2 or 3), and a device that can be left on to test for rajiu (I usually go with an EMF reader or another device that will help complete an 
-            objective, such as a paramic).
+            Vous devez prendre un équipement contenant au minimum de l'encens (je préfère le niveau 1 pour que l'entité s'enfuie et ne traîne pas), des allumettes/briquet,
+            du sel (de préférence de niveau 2 ou 3) et un appareil qui peut être laissé allumé pour tester le Rajiu (j'utilise généralement un lecteur EMF ou un autre appareil qui aidera à compléter un
+            objectif, comme un micro parabolique).
         </p>
         <p>
-            (Single Player) To start, grab the electronic device, turn it on and throw it just inside the gate (this will be used for testing for Raiju).
-            Then grab salt, an ingiter, and an incense.<br>
+            (Solo) Pour commencer, prenez l'appareil électronique, allumez-le et lancez-le juste à l'intérieur de la porte (cela sera utilisé pour tester Raiju).
+            Ensuite, prenez du sel, une allumette et de l'encens.<br>
             <br>
-            (Multiplayer) Have one player grab an igniter and 2 incense and the other player grab salt, an electronic device (for testing raiju and/or completing objectives), and any other equipment
-            that could be used to complete other objectives.<br>
+            (Multijoueur) Demandez à un joueur de prendre une allumette et 2 encens et à l'autre joueur de prendre du sel, un appareil électronique (pour tester le Raiju et/ou atteindre des objectifs) et tout autre équipement
+            qui pourrait être utilisé pour atteindre d’autres objectifs.<br>
             <br>
-            Head toward either the picnic tables just inside the gate or to the campfire in the middle of the logs. Place your salt on the ground in a location the ghost 
-            will likely walk through (opening to the campfire circle or in between the picnic tables). Then wait for the ghost to hunt.<br>
+            Dirigez-vous soit vers les tables de pique-nique juste à l'intérieur de la porte, soit vers le feu de camp au milieu des bûches. Placez votre sel par terre à un endroit où l'entité
+            traversera probablement (ouverture sur le cercle du feu de camp ou entre les tables de pique-nique). Attendez ensuite que l'entité chasse.<br>
             <br>
-            Once the ghost begins to hunt, start to identify what it is based on behaviour (footstep speed, flicker/blink rate, speed up near electronics, freezing breath, etc).
-            Continue to loop the ghost around the campfire / picnic tables and smudge if needed.<br>
+            Une fois que l'entité commence à chasser, commencez à identifier de quoi il s'agit en fonction de son comportement (vitesse de pas, taux de scintillement/clignotement, accélération à proximité des appareils électroniques, souffle glacial, etc.).
+            Continuez à faire une boucle avec le fantôme autour du feu de camp/des tables de pique-nique et brûler l'encencs si nécessaire.<br>
             <br>
-            After the hunt is over, you can either use a timer to narrow down if it is a spirit or demon based on smudge cooldown (this takes quite a bit of time, but allows time to complete more objectives),
-            or you can guess the ghost and leave. This entire process can be done in under 2 minutes if optimized and rewards between 2000xp - 5000xp for correct ghost and completed objectives.
+            Une fois la chasse terminée, vous pouvez soit utiliser un chronomètre pour déterminer s'il s'agit d'un Esprit ou d'un Démon, en fonction du temps de recharge (cela prend un peu de temps, mais laisse le temps d'accomplir plus d'objectifs),
+            ou vous pouvez deviner le type d'entité et partir. L’ensemble de ce processus peut être effectué en moins de 2 minutes s’il est optimisé et récompense entre 2 000 xp et 5 000 xp pour une entité correcte et des objectifs atteints.
         </p>
     </div>
     <div class="text">
-        <p><b><u>Custom Difficulty Settings:</u></b></p>
-        <b>Player:</b>
+        <p><b><u>Paramètres de difficulté personnalisés :</u></b></p>
+        <b>Joueur :</b>
         <ul>
-            <li>Starting Sanity: 0</li>
-            <li>Sanity Pill Restoration (%): 0</li>
-            <li>Sanity drain speed (%): 200</li>
-            <li>Sprinting: Off</li>
-            <li>Player speed (%): 100</li>
-            <li>Flashlights: Off</li>
-            <li>Lose items and consumables: On</li>
+            <li>Santé mentale initiale : 0</li>
+            <li>Santé mentale récupérée (pillules) (%): 0</li>
+            <li>Taux de perte de santé mentale (%): 200</li>
+            <li>Sprint : Off</li>
+            <li>Vitesse du joueur (%): 100</li>
+            <li>Lampe de poche: Off</li>
+            <li>Perte des objets et des consommables : Activé</li>
         </ul>
-        <b>Ghost:</b>
+        <b>Entité :</b>
         <ul>
-            <li>Ghost speed (%): 100</li>
-            <li>Roaming frequency: High</li>
-            <li>Changing favourite room: High</li>
-            <li>Interaction amount: Low</li>
-            <li>Event frequency: Low</li>
-            <li>Friendly ghost: Off</li>
-            <li>Grace period (s): 0</li>
-            <li>Hunt duration (s): Medium</li>
-            <li>Evidence Given: 0</li>
+            <li>Vitesse de l'entité (%): 100</li>
+            <li>Fréquence de déplacement : Elevée</li>
+            <li>Changement de pièce préféree : Elevé</li>
+            <li>Nombre d'interactions : Faible</li>
+            <li>Fréquence des évênements : Faible</li>
+            <li>Entité amicale : Off</li>
+            <li>Période de grâce(s) : 0</li>
+            <li>Durée des chasses: Moyenne</li>
+            <li>Preuves apportées: 0</li>
         </ul>
-        <b>Contract:</b>
+        <b>Contrat :</b>
         <ul>
-            <li>Setup time (s): 0</li>
-            <li>Weather: Windy</li>
-            <li>Doors starting open: High</li>
-            <li>Number of hiding places: None</li>
-            <li>Sanity monitor: Off</li>
-            <li>Activity monitor: Off</li>
-            <li>Fuse box at start of contract: Broken</li>
-            <li>Fuse box visible on map: Off</li>
+            <li>Temps de prépâration : 0</li>
+            <li>Météo : Vent</li>
+            <li>Portes ouvertes en début de partie : Elevée</li>
+            <li>Caches : Aucune</li>
+            <li>Moniteur de santé mentale : Off</li>
+            <li>Moniteur d'activité: Off</li>
+            <li>Disjoncteur au début du contrat : Cassé</li>
+            <li>Disjoncteur visible sur la carte : Off</li>
         </ul>
     </div>
 </div>

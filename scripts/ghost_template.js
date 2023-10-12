@@ -2,40 +2,40 @@ evi_color = {
     "EMF 5": "#db4d48",
     "DOTs": "#2ccc29",
     "Ultraviolet": "#ad8ce7",
-    "Freezing": "#9ae0f7",
-    "Ghost Orbs": "#dbd993",
-    "Writing": "#4d8ce3",
-    "Spirit Box": "#d18c5e", 
+    "Glaciale": "#9ae0f7",
+    "Orbe": "#dbd993",
+    "Écriture": "#4d8ce3",
+    "Spirit Box": "#d18c5e",
 }
 
 evi_icons = {
     "EMF 5": "imgs/emf5-icon.png",
     "DOTs": "imgs/dots-icon.png",
     "Ultraviolet": "imgs/fingerprints-icon.png",
-    "Freezing": "imgs/freezing-icon.png",
-    "Ghost Orbs": "imgs/orbs-icon.png",
-    "Writing": "imgs/writing-icon.png",
-    "Spirit Box": "imgs/spirit-box-icon.png", 
+    "Glaciale": "imgs/freezing-icon.png",
+    "Orbe": "imgs/orbs-icon.png",
+    "Écriture": "imgs/writing-icon.png",
+    "Spirit Box": "imgs/spirit-box-icon.png",
 }
 
 behavior_titles = {
-    "<Tells>":"<div class='dtitle'><i>Tells</i><div class='ddash'></div></div>",
-    "<Behaviors>":"<div class='dtitle'><i>Behaviors</i><div class='ddash'></div></div>",
-    "<Hunt Sanity>":"<div class='dtitle'><i>Hunt Sanity</i><div class='ddash'></div></div>",
-    "<Hunt Speed>":"<div class='dtitle'><i>Hunt Speed</i><div class='ddash'></div></div>",
-    "<Evidence>":"<div class='dtitle'><i>Evidence</i><div class='ddash'></div></div>"
+    "<On sait>": "<div class='dtitle'><i>On sait</i><div class='ddash'></div></div>",
+    "<Comportements>": "<div class='dtitle'><i>Comportements</i><div class='ddash'></div></div>",
+    "<Seuil de chasse>": "<div class='dtitle'><i>Seuil de chasse</i><div class='ddash'></div></div>",
+    "<Vitesse de chasse>": "<div class='dtitle'><i>Vitesse de chasse</i><div class='ddash'></div></div>",
+    "<Preuve>": "<div class='dtitle'><i>Preuve</i><div class='ddash'></div></div>"
 }
 
 class Ghost {
-    constructor(data){
+    constructor(data) {
 
-        for (var i = 0; i < data.behavior.length; i++){
+        for (var i = 0; i < data.behavior.length; i++) {
             var assets = [...data.behavior[i].matchAll("\{[a-zA-Z0-9:/_.-]+\}")];
-            for (var j = 0; j < assets.length; j++){
-                var type = assets[j].toString().replace('{','').replace('}','').split(':')[0]
-                var resource_path = assets[j].toString().replace('{','').replace('}','').split(':')[1]
+            for (var j = 0; j < assets.length; j++) {
+                var type = assets[j].toString().replace('{', '').replace('}', '').split(':')[0]
+                var resource_path = assets[j].toString().replace('{', '').replace('}', '').split(':')[1]
                 if (type == 'audio') {
-                    data.behavior[i] = data.behavior[i].replace(assets[j],` <span class="sound" onClick="playSound('https://zero-network.net/phasmophobia/static/${resource_path}')">&#128266;</span>`)
+                    data.behavior[i] = data.behavior[i].replace(assets[j], ` <span class="sound" onClick="playSound('https://zero-network.net/phasmophobia/static/${resource_path}')">&#128266;</span>`)
                 }
             }
         }
@@ -73,21 +73,19 @@ class Ghost {
         `
     }
 
-    behavior(value){
+    behavior(value) {
         var opened = false
         var msg = "<div class='ghost_behavior_item'>"
 
-        for (var i = 0; i < value.length; i++){
-            if (behavior_titles.hasOwnProperty(value[i])){
-                if(opened){
+        for (var i = 0; i < value.length; i++) {
+            if (behavior_titles.hasOwnProperty(value[i])) {
+                if (opened) {
                     msg += `</ul>${behavior_titles[value[i]]}<ul>`
-                }
-                else {
+                } else {
                     msg += `${behavior_titles[value[i]]}<ul>`
                     opened = true
                 }
-            }
-            else{
+            } else {
                 msg += `<li>${value[i]}</li>`
             }
         }
@@ -95,11 +93,11 @@ class Ghost {
         return msg
     }
 
-    toNumStr(num) { 
-        if (Number.isInteger(num)) { 
-          return num + ".0"
+    toNumStr(num) {
+        if (Number.isInteger(num)) {
+            return num + ".0"
         } else {
-          return num.toString(); 
+            return num.toString();
         }
-      }
+    }
 }
