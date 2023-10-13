@@ -18,20 +18,20 @@ function setCookie(e, t, i) {
 }
 
 const all_evidence = ["DOTs", "EMF 5", "Ultraviolet", "Glaciale", "Orbe", "Écriture", "Spirit Box"]
-const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "Djinn", "Cauchemar", "Revenant", "Ombre", "Démon", "Yurei", "Oni", "Yokaï", "Hantu", "Goryo", "Myling", "Onryo", "Les Jumeaux", "Raiju", "Obake", "Le Mimic", "Moroi", "Deogen", "Thayé"]
-const all_speed = ["Lent", "Normal", "Rapide"]
-const all_sanity = ["Tard", "Moyenne", "Tôt", "Très tôt"]
+const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "Djinn", "Cauchemar", "Revenant", "Ombre", "Démon", "Yurei", "Oni", "Yokaï", "Hantu", "Goryo", "Myling", "Onryo", "Les Jumeaux", "Raiju", "Obake", "Le Mimic", "Moroï", "Deogen", "Thayé"]
+const all_speed = ["Lente", "Normal", "Rapide"]
+const all_sanity = ["Tard", "Normal", "Tôt", "Très tôt"]
 
 var state = {
     "evidence": {},
     "speed": {
-        "Lent": 0,
+        "Lente": 0,
         "Normal": 0,
         "Rapide": 0
     },
     "sanity": {
         "Tard": 0,
-        "Moyenne": 0,
+        "Normal": 0,
         "Tôt": 0,
         "Très tôt": 0
     },
@@ -241,7 +241,7 @@ function remove(elem, ignore_link = false) {
 function filter(ignore_link = false) {
     state["evidence"] = {}
     state["speed"] = {
-        "Lent": 0,
+        "Lente": 0,
         "Normal": 0,
         "Rapide": 0
     }
@@ -250,7 +250,7 @@ function filter(ignore_link = false) {
     }
     state["sanity"] = {
         "Tard": 0,
-        "Moyenne": 0,
+        "Normal": 0,
         "Tôt": 0,
         "Très tôt": 0
     }
@@ -489,7 +489,7 @@ function filter(ignore_link = false) {
 
             spe_array.forEach(function (item, index) {
 
-                if (item == "Lent") {
+                if (item == "Lente") {
                     skeep = true
                 } else if (item == "Normal") {
                     nkeep = true
@@ -516,7 +516,7 @@ function filter(ignore_link = false) {
         // Check if speed is being kept
         if (keep) {
             if (min_speed < base_speed || name == "The Mimic") {
-                keep_speed.add('Lent')
+                keep_speed.add('Lente')
             }
             if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "The Mimic") {
                 keep_speed.add('Normal')

@@ -59,6 +59,7 @@
             ],
             "nightmare_evidence": null,
             "behavior": [
+                "<On sait>",
                 "N'apparaît pas sur les photos",
                 "Lors d'un événement ou pendant l'état DOT, prendre une photo fera disparaître le fantôme",
                 "Moins visible lors des chasses (Voir l'onglet 'Guides')",
@@ -277,14 +278,14 @@
             "behavior": [
                 "<On sait>",
                 "Draine 20% sur les événements fantomatiques, au lieu de 10%",
-                "Ne fera<b><i>jamais</i></b> l'événement 'brume/souffle fantomatique'",
+                "Ne fera <b><i>jamais</i></b> l'événement 'brume/souffle fantomatique'",
                 "Plus visible lors des chasses (Voir onglet 'Guides')",
                 "<Comportements>",
                 "Plus actif avec plusieurs personnes"
             ]
         },
         {
-            "ghost": "Yokai",
+            "ghost": "Yokaï",
             "min_speed": 1.7,
             "max_speed": null,
             "alt_speed": null,

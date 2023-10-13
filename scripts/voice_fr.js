@@ -1,49 +1,49 @@
 const ZNLANG = {
     "overall": {},
     "ghosts": {
-        "spirit": ["esprit"],
-        "wraith": ["spectre"],
-        "phantom": ["fantôme"],
+        "esprit": ["spirit", "est-ce pris", "exprès"],
+        "spectre": ["spec"],
+        "fantôme": [],
         "poltergeist": [],
         "banshee": [],
-        "jinn": ["djinn"],
-        "mare": ["cauchemar"],
-        "revenant": ["revenant"],
-        "shade": ["ombre"],
-        "demon": ["démon"],
+        "djinn": ["jean"],
+        "cauchemar": [],
+        "revenant": [],
+        "ombre": [],
+        "démon": [],
         "yurei": [],
-        "oni": [],
-        "yokai": ["yokaï"],
-        "hantu": [],
+        "oni": ["osny", "oignies"],
+        "yokaï": [],
+        "hantu": ["en tout"],
         "goryo": [],
-        "myling": [],
-        "onryo": [],
-        "the twins": ["jumeaux"],
-        "raiju": [],
-        "obake": [],
-        "the mimic": ["mimic"],
-        "moroi": [],
-        "deogen": [],
-        "thaye": ["thayé"]
+        "myling": ["mehling", "mailing", "mealing", "meaning"],
+        "onryo": ["on rio"],
+        "les jumeaux": ["jumeaux"],
+        "raiju": ["radio"],
+        "obake": ["au baquet", "au bac"],
+        "le mimic": ["mimic", "luminique", "mimique"],
+        "moroï": ["moreuil"],
+        "deogen": ["diogène"],
+        "thayé": ["taillé", "ta haie", "ça y est"]
     },
     "evidence": {
-        "emf 5": [],
-        "dots": [],
-        "ultraviolet": [],
-        "freezing": ["glaciale", "température"],
-        "ghost orbs": ["orbe"],
-        "writing": ["écriture"],
-        "spirit box": []
+        "emf 5": ["emf", "emf cinq"],
+        "dots": ["DOTs", "dot", "dock", "d'hôtes", "date"],
+        "ultraviolet": ["empreintes"],
+        "glaciale": ["température", "froid"],
+        "orbe": ["orbe fantomatique"],
+        "écriture": ["écriture fantomatique", "cahier", "livre"],
+        "spirit box": ["radio"]
     },
     "speed": {
-        "slow": ["lent"],
+        "lente": ["lent"],
         "normal": [],
-        "fast": ["rapide"]
+        "rapide": []
     },
     "sanity": {
-        "late": ["tard"],
-        "average": ["normal"],
-        "early": ["tôt"],
-        "very early": ["très tôt"]
+        "tard": [],
+        "normal": ["moyenne", "moyen"],
+        "tôt": ["tout", "d'eau", "taux"],
+        "très tôt": []
     }
 }
