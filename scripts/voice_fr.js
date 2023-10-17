@@ -37,13 +37,13 @@ const ZNLANG = {
     },
     "speed": {
         "lente": ["lent"],
-        "normal": [],
+        "normal": ["moyenne", "moyen"],
         "rapide": []
     },
     "sanity": {
         "tard": [],
-        "normal": ["moyenne", "moyen"],
+        "average": ["moyenne", "moyen","normal"],
         "tôt": ["tout", "d'eau", "taux"],
-        "très tôt": []
+        "trèstôt": []
     }
 }

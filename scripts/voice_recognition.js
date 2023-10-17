@@ -263,18 +263,18 @@ function parse_speech(vtext) {
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
         console.log("Recognized speed command")
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('hunt sanity', "").replace('sanity', "").replace('santé mentale', "").trim()
+        vtext = vtext.replace('hunt sanity', "").replace('sanity', "").replace('santé mentale', "").replace('seuil de chasse', "").trim()
 
-        var smallest_sanity = "Late"
+        var smallest_sanity = "tard"
         var smallest_val = 100
         var vvalue = 1
 
 
         if (vtext.startsWith("not ") || vtext.startsWith("knot ") || vtext.startsWith('pas ') || vtext.startsWith('par ')) {
-            vtext = vtext.replace('not ', "").replace('knot ', "").replace('pas ', "").trim()
+            vtext = vtext.replace('not ', "").replace('knot ', "").replace('pas ', "").replace('par ', "").trim()
             vvalue = 0
-        } else if (vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear") || vtext.startsWith("annuler") || vtext.startsWith("annulée") || vtext.startsWith("effacer")) {
-            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ", "").replace("on due ", "").replace("clear ", "").replace("annuler ", "").replace("effacer", "").trim()
+        } else if (vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear") || vtext.startsWith("annuler ") || vtext.startsWith("annulée ") || vtext.startsWith("effacer ")) {
+            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ", "").replace("on due ", "").replace("clear ", "").replace("annuler ", "").replace("annulée ", "").replace("effacer", "").trim()
             vvalue = 0
         }
 
