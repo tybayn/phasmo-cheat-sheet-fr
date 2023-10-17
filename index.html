@@ -126,7 +126,7 @@
 
     <div id="settings_box" style="left:-32px;">
         <div id="settings_tab" onclick="showSettings()">
-            Settings
+            Paramètres
             <div id="settings_status"></div>
             <div id="dllink_status"></div>
             <div id="voice_recognition_status" class="pulse_animation" style="display:none; background-image: url(imgs/mic.png);"></div>
@@ -459,7 +459,7 @@
             checkParams()
             .then(x => {
                 loadAllAndConnect()
-                $(function(){$("#wiki-body").load("wiki-v3/wiki-v3.html")});
+                $(function(){$("#wiki-body").load("wiki/wiki.html")});
                 if(getCookie("voice_recognition_on")){
                     start_voice()
                 }
