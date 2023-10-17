@@ -20,7 +20,7 @@ function setCookie(e, t, i) {
 const all_evidence = ["DOTs", "EMF 5", "Ultraviolet", "Glaciale", "Orbe", "Écriture", "Spirit Box"]
 const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "Djinn", "Cauchemar", "Revenant", "Ombre", "Démon", "Yurei", "Oni", "Yokaï", "Hantu", "Goryo", "Myling", "Onryo", "Les Jumeaux", "Raiju", "Obake", "Le Mimic", "Moroï", "Deogen", "Thayé"]
 const all_speed = ["Lente", "Normal", "Rapide"]
-const all_sanity = ["Tard", "Normal", "Tôt", "Très tôt"]
+const all_sanity = ["Tard", "Average", "Tôt", "Trèstôt"]
 
 var state = {
     "evidence": {},
@@ -31,9 +31,9 @@ var state = {
     },
     "sanity": {
         "Tard": 0,
-        "Normal": 0,
+        "Average": 0,
         "Tôt": 0,
-        "Très tôt": 0
+        "Trèstôt": 0
     },
     "ghosts": {}
 }
@@ -74,7 +74,7 @@ function toggleFilterTools() {
         $('#show_filter_button').removeClass('filter_tool_button_back')
         $('#tools-content').removeClass('spin_show')
         $('#tools-content').addClass('spin_hide')
-        setTimeout(function () {
+        setTimeout(function() {
             $('#tools-content').toggle()
             $('#tools-content').removeClass('spin_hide')
             $('#filter-content').addClass('spin_show')
@@ -89,7 +89,7 @@ function toggleFilterTools() {
         $('#show_filter_button').removeClass('filter_tool_button_live')
         $('#filter-content').removeClass('spin_show')
         $('#filter-content').addClass('spin_hide')
-        setTimeout(function () {
+        setTimeout(function() {
             $('#filter-content').toggle()
             $('#filter-content').removeClass('spin_hide')
             $('#tools-content').addClass('spin_show')
@@ -182,34 +182,30 @@ function tristate(elem, ignore_link = false) {
 }
 
 function select(elem, ignore_link = false) {
-    if (!$(elem).hasClass("faded")) {
+    if ($(elem).hasClass("faded")) {
         fade(elem, ignore_link)
     }
 
-    var on = false
-    if (!ignore_link) {
+    var on = $(elem).hasClass("selected")
 
-        on = $(elem).hasClass("selected")
-
-        for (const [key, value] of Object.entries(state["ghosts"])) {
-            if (value == 2) {
-                state['ghosts'][key] = 1
-                document.getElementById(key).className = "ghost_card"
-            }
+    for (const [key, value] of Object.entries(state["ghosts"])){ 
+        if(value == 2){
+            state['ghosts'][key] = 1
+            document.getElementById(key).className = "ghost_card"
         }
     }
 
-    if (on) {
-        $(elem).removeClass("selected");
+    if (on){
+        $(elem).removeClass(["selected"]);
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
-    } else {
+    }
+    else{
+        $(elem).removeClass("permhidden")
         $(elem).addClass("selected");
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 2;
     }
-    setCookie("state", JSON.stringify(state), 1)
-    if (!ignore_link) {
-        filter(ignore_link)
-    }
+    setCookie("state",JSON.stringify(state),1)
+    if(!ignore_link){filter(ignore_link)}
 }
 
 function fade(elem, ignore_link = false) {
@@ -250,9 +246,9 @@ function filter(ignore_link = false) {
     }
     state["sanity"] = {
         "Tard": 0,
-        "Normal": 0,
+        "Average": 0,
         "Tôt": 0,
-        "Très tôt": 0
+        "Trèstôt": 0
     }
 
     // Get values of checkboxes
@@ -264,9 +260,9 @@ function filter(ignore_link = false) {
     var san_array = [];
     var san_lookup = {
         "Tard": 0,
-        "Moyenne": 40,
+        "Average": 40,
         "Tôt": 50,
-        "Très tôt": 75
+        "Trèstôt": 75
     }
     var monkey_evi = ""
     if (document.querySelectorAll('[name="evidence"] .monkey-disabled').length > 0)
@@ -347,7 +343,7 @@ function filter(ignore_link = false) {
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_low")[0].textContent),
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_high")[0].textContent)
         ]
-        if (name == "The Mimic") {
+        if (name == "Le Mimic") {
             evidence.push("Orbe")
             mimic_evi = evidence
             nm_evidence = "Orbe"
@@ -364,7 +360,7 @@ function filter(ignore_link = false) {
         if (num_evidences == "3") {
 
             if (evi_array.length > 0) {
-                evi_array.forEach(function (item, index) {
+                evi_array.forEach(function(item, index) {
                     if (!evidence.includes(item)) {
                         keep = false
                     }
@@ -372,7 +368,7 @@ function filter(ignore_link = false) {
             }
 
             if (not_evi_array.length > 0) {
-                not_evi_array.forEach(function (item, index) {
+                not_evi_array.forEach(function(item, index) {
                     if (evidence.includes(item)) {
                         keep = false
                     }
@@ -384,14 +380,14 @@ function filter(ignore_link = false) {
         else if (num_evidences == "2") {
 
 
-            if (evi_array.length == 3 && name != "The Mimic") {
+            if (evi_array.length == 3 && name != "Le Mimic") {
                 keep = false
             } else if (evi_array.length > 0) {
                 if (evi_array.length > (evidence.length > 3 ? 2 : 1) && evidence.filter(x => !evi_array.includes(x)).includes(nm_evidence)) {
                     keep = false
                 }
 
-                evi_array.forEach(function (item, index) {
+                evi_array.forEach(function(item, index) {
                     if (!evidence.includes(item)) {
                         keep = false
                     }
@@ -412,14 +408,14 @@ function filter(ignore_link = false) {
         // Insanity
         else if (num_evidences == "1") {
 
-            if (evi_array.length == 2 && name != "The Mimic") {
+            if (evi_array.length == 2 && name != "Le Mimic") {
                 keep = false
             } else if (evi_array.length > 0) {
                 if (evi_array.length > (evidence.length > 3 ? 1 : 0) && evidence.filter(x => !evi_array.includes(x)).includes(nm_evidence)) {
                     keep = false
                 }
 
-                evi_array.forEach(function (item, index) {
+                evi_array.forEach(function(item, index) {
                     if (!evidence.includes(item)) {
                         keep = false
                     }
@@ -440,11 +436,11 @@ function filter(ignore_link = false) {
         // Apocalypse
         else if (num_evidences == "0") {
 
-            if (evi_array.length > 0 && name != "The Mimic") {
+            if (evi_array.length > 0 && name != "Le Mimic") {
                 keep = false
             }
 
-            if (not_evi_array.length > 0 && name == "The Mimic") {
+            if (not_evi_array.length > 0 && name == "Le Mimic") {
                 keep = false
             }
         }
@@ -483,11 +479,11 @@ function filter(ignore_link = false) {
                 nkeep = false,
                 fkeep = false;
 
-            var shas = (min_speed < base_speed || name == "The Mimic")
-            var nhas = (speed_type == "or" && (min_speed === base_speed || max_speed === base_speed || name == "The Mimic")) || (speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed)
-            var fhas = (max_speed > base_speed || name == "The Mimic")
+            var shas = (min_speed < base_speed || name == "Le Mimic")
+            var nhas = (speed_type == "or" && (min_speed === base_speed || max_speed === base_speed || name == "Le Mimic")) || (speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed)
+            var fhas = (max_speed > base_speed || name == "Le Mimic")
 
-            spe_array.forEach(function (item, index) {
+            spe_array.forEach(function(item, index) {
 
                 if (item == "Lente") {
                     skeep = true
@@ -515,29 +511,29 @@ function filter(ignore_link = false) {
 
         // Check if speed is being kept
         if (keep) {
-            if (min_speed < base_speed || name == "The Mimic") {
+            if (min_speed < base_speed || name == "Le Mimic") {
                 keep_speed.add('Lente')
             }
-            if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "The Mimic") {
+            if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "Le Mimic") {
                 keep_speed.add('Normal')
             } else if (min_speed === base_speed || max_speed === base_speed) {
                 keep_speed.add('Normal')
             }
-            if (max_speed > base_speed || name == "The Mimic") {
+            if (max_speed > base_speed || name == "Le Mimic") {
                 keep_speed.add('Rapide')
             }
 
             if (sanity[0] > san_lookup['Tard'] || sanity[1] > san_lookup['Tard']) {
                 keep_sanity.add('Tard')
             }
-            if (sanity[0] > san_lookup['Moyenne'] || sanity[1] > san_lookup['Moyenne']) {
-                keep_sanity.add('Moyenne')
+            if (sanity[0] > san_lookup['Average'] || sanity[1] > san_lookup['Average']) {
+                keep_sanity.add('Average')
             }
             if (sanity[0] > san_lookup['Tôt'] || sanity[1] > san_lookup['Tôt']) {
                 keep_sanity.add('Tôt')
             }
-            if (sanity[0] > san_lookup['Très tôt'] || sanity[1] > san_lookup['Très tôt']) {
-                keep_sanity.add('Très tôt')
+            if (sanity[0] > san_lookup['Trèstôt'] || sanity[1] > san_lookup['Trèstôt']) {
+                keep_sanity.add('Trèstôt')
             }
         }
 
@@ -553,7 +549,7 @@ function filter(ignore_link = false) {
 
     if (num_evidences == "3") {
         if (evi_array.length > 0) {
-            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -567,7 +563,7 @@ function filter(ignore_link = false) {
     } else if (num_evidences == "2") {
         var keep_evi = evi_array
         if (keep_evi.length == 3) {
-            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -588,7 +584,7 @@ function filter(ignore_link = false) {
                 }
             }
 
-            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -599,7 +595,7 @@ function filter(ignore_link = false) {
                 }
             })
         } else if (keep_evi.length > 0) {
-            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -613,7 +609,7 @@ function filter(ignore_link = false) {
     } else if (num_evidences == "1") {
         var keep_evi = evi_array
         if (keep_evi.length == 2) {
-            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -634,7 +630,7 @@ function filter(ignore_link = false) {
                 }
             }
 
-            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -645,7 +641,7 @@ function filter(ignore_link = false) {
                 }
             })
         } else if (keep_evi.length > 0) {
-            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function (item) {
+            all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
@@ -657,7 +653,7 @@ function filter(ignore_link = false) {
             })
         }
     } else if (num_evidences == "0") {
-        all_evidence.filter(evi => evi != 'Orbe').forEach(function (item) {
+        all_evidence.filter(evi => evi != 'Orbe').forEach(function(item) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good", "bad"])
@@ -675,7 +671,7 @@ function filter(ignore_link = false) {
     $(monkey_checkbox).find(".label").removeClass("strike")
 
     if (evi_array.length > 0 || not_evi_array.length > 0) {
-        all_speed.filter(spe => !keep_speed.has(spe)).forEach(function (item) {
+        all_speed.filter(spe => !keep_speed.has(spe)).forEach(function(item) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good"])
@@ -683,7 +679,7 @@ function filter(ignore_link = false) {
             $(checkbox).find(".label").addClass("disabled-text")
         })
 
-        all_sanity.filter(san => !keep_sanity.has(san)).forEach(function (item) {
+        all_sanity.filter(san => !keep_sanity.has(san)).forEach(function(item) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good"])
@@ -785,7 +781,7 @@ function flashMode() {
     var cur_evidence = parseInt(document.getElementById("num_evidence").value)
     var mode_text = ["Apocalypse", "Démence", "Cauchemar", "Professionel"][cur_evidence]
     document.getElementById("game_mode").innerHTML = `${mode_text}<span>(${cur_evidence} preuve)</span>`
-    $("#game_mode").fadeIn(500, function () {
+    $("#game_mode").fadeIn(500, function() {
         $("#game_mode").delay(500).fadeOut(500);
     });
 }

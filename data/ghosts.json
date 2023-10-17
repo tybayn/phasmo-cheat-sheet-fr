@@ -98,8 +98,8 @@
             "alt_speed": null,
             "speed_is_range": 0,
             "hunt_sanity": "50%",
-            "hunt_sanity_low": "50%",
-            "hunt_sanity_high": "50%",
+            "hunt_sanity_low": "12%",
+            "hunt_sanity_high": "87%",
             "evidence": [
                 "Ultraviolet",
                 "Orbe",
