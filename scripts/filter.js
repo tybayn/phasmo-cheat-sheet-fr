@@ -548,7 +548,7 @@ function filter(ignore_link = false) {
     }
 
     if (num_evidences == "3") {
-        if (evi_array.length > 0) {
+        if (evi_array.length >= 0) {
             all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
