@@ -456,22 +456,19 @@
     <script src="scripts/sparkles.js"></script>
     <script>
         $(window).on('load', function() {
-            loadAllAndConnect()
-            $(function() {
-                $("#wiki-body").load("wiki/wiki.html")
-            });
-            if (getCookie("voice_recognition_on")) {
-                start_voice()
-            }
-            setInterval(function() {
-                if (!document.hidden) {
-                    try {
-                        heartbeat()
-                    } catch (Error) {
-                        console.error("Heartbeat failed!")
-                    }
+            checkParams()
+            .then(x => {
+                loadAllAndConnect()
+                $(function(){$("#wiki-body").load("wiki-v3/wiki-v3.html")});
+                if(getCookie("voice_recognition_on")){
+                    start_voice()
                 }
-            }, 300000)
+                setInterval(function(){
+                    if(!document.hidden){
+                        try{heartbeat()} catch(Error){console.error("Heartbeat failed!")}
+                    }
+                }, 300000)
+            })
         });
     </script>
 

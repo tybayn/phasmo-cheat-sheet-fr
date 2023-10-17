@@ -18,6 +18,19 @@ function heartbeat(){
     }
 }
 
+function checkParams(){
+    return new Promise((resolve, reject) => {
+        params = new URL(window.location.href).searchParams
+
+        if (params.get('journal')){
+            setCookie("room_id",params.get('journal'),1)
+            window.location.href = window.location.href.split("?")[0]
+        }
+
+        resolve("URL parsed")
+    })
+}
+
 function loadAllAndConnect(){
     let loadZN = new Promise((resolve, reject) => {
         if(znid && znid!="no-connection-to-server"){
