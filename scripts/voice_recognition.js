@@ -93,11 +93,11 @@ function parse_speech(vtext) {
         } else if (vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear") || vtext.startsWith("annuler") || vtext.startsWith("annulée") || vtext.startsWith("effacer")) {
             vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ", "").replace("on due ", "").replace("clear ", "").replace("annuler ", "").replace("effacer", "").trim()
             vvalue = 0
-        } else if (vtext.startsWith("select ") || vtext.startsWith("deselect ") || vtext.startsWith("séléctionner ") || vtext.startsWith("choisir ")) {
-            vtext = vtext.replace('deselect ', "").replace('select ', "").replace('séléctionner ', "").replace('choisir ', "").trim()
+        } else if (vtext.startsWith("select ") || vtext.startsWith("deselect ") || vtext.startsWith("séléctionner ") || vtext.startsWith("séléctionnée ") || vtext.startsWith("choisir ")) {
+            vtext = vtext.replace('deselect ', "").replace('select ', "").replace('séléctionner ', "").replace('séléctionnée ', "").replace('choisir ', "").trim()
             vvalue = 2
-        } else if (vtext.startsWith("hide ") || vtext.startsWith("remove ") || vtext.startsWith("cacher ") || vtext.startsWith("barrer ") || vtext.startsWith("rayer")) {
-            vtext = vtext.replace('hide ', "").replace('remove ', "").replace('cacher ', "").replace('barrer ', "").trim()
+        } else if (vtext.startsWith("hide ") || vtext.startsWith("remove ") || vtext.startsWith("cacher ") || vtext.startsWith("barrer ") || vtext.startsWith("barrée ") || vtext.startsWith("rayer ")) {
+            vtext = vtext.replace('hide ', "").replace('remove ', "").replace('cacher ', "").replace('barrer ', "").replace('barrée ', "").replace('rayer ', "").trim()
             vvalue = -1
         }
 
