@@ -44,6 +44,6 @@ const ZNLANG = {
         "tard": [],
         "average": ["moyenne", "moyen","normal"],
         "tôt": ["tout", "d'eau", "taux"],
-        "trèstôt": []
+        "très tôt": []
     }
 }
