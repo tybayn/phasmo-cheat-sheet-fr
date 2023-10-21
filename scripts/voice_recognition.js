@@ -20,6 +20,16 @@ const levenshtein_distance = (str1 = '', str2 = '') => {
     return track[str2.length][str1.length];
 };
 
+$.fn.isInViewport = function () {
+    let elementTop = $(this).offset().top;
+    let elementBottom = elementTop + $(this).outerHeight();
+  
+    let viewportTop = $(window).scrollTop();
+    let viewportBottom = viewportTop + window.innerHeight;
+  
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+}
+
 function reset_voice_status() {
     setTimeout(function () {
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic.png)";
@@ -124,6 +134,8 @@ function parse_speech(vtext) {
             fade(document.getElementById(smallest_ghost));
         } else if (vvalue == 2) {
             select(document.getElementById(smallest_ghost));
+            if(!$(document.getElementById(smallest_ghost)).isInViewport())
+                document.getElementById(smallest_ghost).scrollIntoView({alignToTop:true,behavior:"smooth"})
         } else if (vvalue == -1) {
             remove(document.getElementById(smallest_ghost));
         }
@@ -167,12 +179,10 @@ function parse_speech(vtext) {
         }
         console.log(`${prevtext} >> ${vtext} >> ${smallest_evidence}`)
 
-        while (vvalue != {
-                "good": 1,
-                "bad": -1,
-                "neutral": 0
-            } [document.getElementById(smallest_evidence).querySelector("#checkbox").classList[0]]) {
-            tristate(document.getElementById(smallest_evidence));
+        if(!$(document.getElementById(smallest_evidence).querySelector("#checkbox")).hasClass("block")){
+            while (vvalue != {"good":1,"bad":-1,"neutral":0}[document.getElementById(smallest_evidence).querySelector("#checkbox").classList[0]]){
+                tristate(document.getElementById(smallest_evidence));
+            }
         }
 
         reset_voice_status()
@@ -227,33 +237,53 @@ function parse_speech(vtext) {
             vvalue = 0
         } else if (vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear") || vtext.startsWith("annuler") || vtext.startsWith("annulée") || vtext.startsWith("effacer")) {
             vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ", "").replace("on due ", "").replace("clear ", "").replace("annuler ", "").replace("effacer", "").trim()
-            vvalue = 0
+            vvalue = -1
         }
 
-        // Common replacements for speed
-        var prevtext = vtext;
-        for (const [key, value] of Object.entries(ZNLANG['speed'])) {
-            for (var i = 0; i < value.length; i++) {
-                if (vtext.startsWith(value[i])) {
-                    vtext = key
+        vtext = vtext.replace("has ","")
+        if (vtext.startsWith("ligne de vue")){
+            console.log(`${vtext} >> Ligne de Vue`)
+
+            if((vvalue==0 && all_los()) || (vvalue==1 && all_not_los())){
+                domovoi_msg = `${vvalue == 0 ? 'All' : 'No'} current ghosts have LOS!`
+            }
+            else{
+                while (!$(document.getElementById("LOS").querySelector("#checkbox")).hasClass(["neutral","bad","good"][vvalue+1])){
+                    tristate(document.getElementById("LOS"));
+                }
+                domovoi_msg = `${vvalue == -1 ? 'cleared' : vvalue == 0 ? 'marked not' : 'marked'} line of sight`
+            }
+        }
+        else{
+
+            if (vvalue == -1){
+                vvalue = 0
+            }
+
+            // Common replacements for speed
+            var prevtext = vtext;
+            for (const [key, value] of Object.entries(ZNLANG['speed'])) {
+                for (var i = 0; i < value.length; i++) {
+                    if (vtext.startsWith(value[i])) {
+                        vtext = key
+                    }
                 }
             }
-        }
 
-        for (var i = 0; i < all_speed.length; i++) {
-            var leven_val = levenshtein_distance(all_speed[i].toLowerCase(), vtext)
-            if (leven_val < smallest_val) {
-                smallest_val = leven_val
-                smallest_speed = all_speed[i]
+            for (var i = 0; i < all_speed.length; i++) {
+                var leven_val = levenshtein_distance(all_speed[i].toLowerCase(), vtext)
+                if (leven_val < smallest_val) {
+                    smallest_val = leven_val
+                    smallest_speed = all_speed[i]
+                }
             }
-        }
-        console.log(`${prevtext} >> ${vtext} >> ${smallest_speed}`)
+            console.log(`${prevtext} >> ${vtext} >> ${smallest_speed}`)
 
-        while (vvalue != {
-                "good": 1,
-                "neutral": 0
-            } [document.getElementById(smallest_speed).querySelector("#checkbox").classList[0]]) {
-            dualstate(document.getElementById(smallest_speed));
+            if(!$(document.getElementById(smallest_speed).querySelector("#checkbox")).hasClass("block")){
+                while (vvalue != {"good":1,"neutral":0}[document.getElementById(smallest_speed).querySelector("#checkbox").classList[0]]){
+                    dualstate(document.getElementById(smallest_speed));
+                }
+            }
         }
 
         reset_voice_status()
@@ -297,11 +327,10 @@ function parse_speech(vtext) {
         }
         console.log(`${prevtext} >> ${vtext} >> ${smallest_sanity}`)
 
-        while (vvalue != {
-                "good": 1,
-                "neutral": 0
-            } [document.getElementById(smallest_sanity).querySelector("#checkbox").classList[0]]) {
-            dualstate(document.getElementById(smallest_sanity));
+        if(!$(document.getElementById(smallest_sanity).querySelector("#checkbox")).hasClass("block")){
+            while (vvalue != {"good":1,"neutral":0}[document.getElementById(smallest_sanity).querySelector("#checkbox").classList[0]]){
+                dualstate(document.getElementById(smallest_sanity),false,true);
+            }
         }
 
         reset_voice_status()

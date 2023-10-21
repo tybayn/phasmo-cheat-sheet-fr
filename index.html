@@ -409,6 +409,11 @@
                         <div id="checkbox" class="neutral"><span class="icon"></span></div>
                         <div class="label">Rapide</div>
                     </button>
+                    <hr>
+                    <button id="LOS" class="tricheck white" name="los" onclick="tristate(this)" value="LOS">
+                        <div id="checkbox" class="neutral"><span class="icon"></span></div>
+                        <div class="label label-font-s">Accélération dans LdV</div>
+                    </button>
                 </div>
                 <div class="hunt_sanity_title yfont white">
                     Seuil de chasse
@@ -443,6 +448,7 @@
             <div class="dot-flashing"></div>
         </div>
     </div>
+    <div id="eye" onclick="revive()"><img src="imgs/eye.png"></div>
 
     <script src="scripts/metronome.js"></script>
     <script src="scripts/timer.js"></script>

@@ -1638,6 +1638,11 @@ input {
 
 @media screen and (pointer: fine),
 screen and (pointer: coarse) and (min-device-width: 601px) {
+
+    .label-font-s{
+        font-size: 15px;
+    }
+
     .tricheck {
         border: 0;
         background: none;
@@ -1788,6 +1793,22 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
     }
     .footer_link {
         font-size: inherit;
+    }
+
+    #eye{
+        position: fixed;
+        right: 10px;
+        bottom: 3px;
+    }
+
+    #eye img{
+        width: 25px;
+        cursor: pointer;
+        filter: invert(1);
+    }
+
+    #eye img:hover{
+        filter: invert(0);
     }
 }
 

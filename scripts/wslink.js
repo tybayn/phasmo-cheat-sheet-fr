@@ -173,29 +173,25 @@ function link_room() {
                     if (prev_evidence[key] == -2 && !new_mp) {
                         monkeyPawFilter($(document.getElementById(key)).parent().find(".monkey-paw-select"), true)
                     }
-                    while (value != {
-                            "good": 1,
-                            "bad": -1,
-                            "neutral": 0
-                        } [document.getElementById(key).querySelector("#checkbox").classList[0]]) {
-                        tristate(document.getElementById(key), true);
+                    while (!$(document.getElementById(key).querySelector("#checkbox")).hasClass(["bad","neutral","good"][value + 1])){
+                        tristate(document.getElementById(key),true);
                     }
                 }
             }
-            for (const [key, value] of Object.entries(incoming_state["speed"])) {
-                while (value != {
-                        "good": 1,
-                        "neutral": 0
-                    } [document.getElementById(key).querySelector("#checkbox").classList[0]]) {
-                    dualstate(document.getElementById(key), true);
+            for (const [key, value] of Object.entries(incoming_state["speed"])){ 
+                while (!$(document.getElementById(key).querySelector("#checkbox")).hasClass(["neutral","good"][value])){
+                    dualstate(document.getElementById(key),true);
                 }
             }
-            for (const [key, value] of Object.entries(incoming_state["sanity"])) {
-                while (value != {
-                        "good": 1,
-                        "neutral": 0
-                    } [document.getElementById(key).querySelector("#checkbox").classList[0]]) {
-                    dualstate(document.getElementById(key), true, true);
+            for (const [key, value] of Object.entries(incoming_state["sanity"])){ 
+                while (!$(document.getElementById(key).querySelector("#checkbox")).hasClass(["neutral","good"][value])){
+                    dualstate(document.getElementById(key),true,true);
+                }
+            }
+
+            if(incoming_state.hasOwnProperty("los")){
+                while (!$(document.getElementById("LOS").querySelector("#checkbox")).hasClass(["neutral","bad","good"][incoming_state["los"]+1])){
+                    tristate(document.getElementById("LOS"),true,true);
                 }
             }
 
@@ -329,6 +325,7 @@ function send_state() {
         var outgoing_state = JSON.stringify({
             'evidence': state['evidence'],
             'speed': state['speed'],
+            'los': state['los'],
             'sanity': state['sanity'],
             'ghosts': state['ghosts'],
             'settings': {

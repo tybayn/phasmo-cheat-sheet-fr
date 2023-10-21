@@ -994,6 +994,11 @@
 }
 
 @media screen and (pointer: coarse) and (max-device-width: 600px) {
+
+    .label-font-s{
+        font-size: 27px;
+    }
+
     .tricheck {
         border: 0;
         width: 33.3%;
@@ -1151,5 +1156,9 @@
     }
     .footer_link {
         font-size: large;
+    }
+
+    #eye{
+        display: none;
     }
 }
