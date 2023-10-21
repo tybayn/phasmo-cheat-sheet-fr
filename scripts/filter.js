@@ -395,7 +395,7 @@ function filter(ignore_link = false) {
         }
 
         //Check for los filter
-        if (name != "The Mimic" && speed_has_los != -1 && speed_has_los != has_los){
+        if (name != "Le Mimic" && speed_has_los != -1 && speed_has_los != has_los){
             loskeep = false
         }
 
