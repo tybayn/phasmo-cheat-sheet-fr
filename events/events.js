@@ -4,7 +4,7 @@ function uncover(elem){
 }
 
 $(window).on('load', function() {
-    fetch("data/event-0910.json", {signal: AbortSignal.timeout(6000)})
+    fetch("data/event-0920.json", {signal: AbortSignal.timeout(6000)})
     .then(data => data.json())
     .then(data => {
         if(data['version'] != false){

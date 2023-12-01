@@ -613,14 +613,14 @@
             ]
         }
     ],
-    "version": "v0.9.1.0",
+    "version": "v0.9.2.0",
     "evidence": [
         "EMF 5",
-        "DOTs",
         "Ultraviolet",
-        "Glaciale",
-        "Orbe",
         "Écriture",
+        "Glaciale",
+        "DOTs",
+        "Orbe",
         "Spirit Box"
     ]
 }

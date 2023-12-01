@@ -66,9 +66,10 @@ class Ghost {
                    ${this.behavior(data.behavior)}
                 </div>
                 <div class="ghost_clear">
-                    <span class="check" onclick="select(this.parentElement.parentElement)"></span>
-                    <span class="space"></span>
-                    <span class="icon" onclick="fade(this.parentElement.parentElement)" ondblclick="remove(this.parentElement.parentElement)"></span>
+                    <img class="card_icon card_icon_select" src="imgs/select.png" onclick="select(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_guess" style="display:none;" src="imgs/guess.png" onclick="guess(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_not" src="imgs/not.png" onclick="fade(this.parentElement.parentElement)" ondblclick="remove(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_died" style="display:none;" src="imgs/died.png" onclick="died(this.parentElement.parentElement)">
                 </div>
             </div>
         `

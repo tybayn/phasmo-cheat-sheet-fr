@@ -1,21 +1,5 @@
-function getCookie(e) {
-    let t = e + "=",
-        i = decodeURIComponent(document.cookie).split(";");
-    for (let n = 0; n < i.length; n++) {
-        let o = i[n];
-        for (;
-            " " == o.charAt(0);) o = o.substring(1);
-        if (0 == o.indexOf(t)) return o.substring(t.length, o.length)
-    }
-    return ""
-}
-
-function setCookie(e, t, i) {
-    let n = new Date;
-    n.setTime(n.getTime() + 864e5 * i);
-    let o = "expires=" + n.toUTCString();
-    document.cookie = e + "=" + t + ";" + o + ";path=/"
-}
+function getCookie(e){let t=e+"=",i=decodeURIComponent(document.cookie).split(";");for(let n=0;n<i.length;n++){let o=i[n];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(t))return o.substring(t.length,o.length)}return""}
+function setCookie(e,t,i){let n=new Date;n.setTime(n.getTime()+864e5*i);let o="expires="+n.toUTCString();document.cookie=e+"="+t+";"+o+";path=/"}
 
 const all_evidence = ["DOTs", "EMF 5", "Ultraviolet", "Glaciale", "Orbe", "Écriture", "Spirit Box"]
 const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "Djinn", "Cauchemar", "Revenant", "Ombre", "Démon", "Yurei", "Oni", "Yokaï", "Hantu", "Goryo", "Myling", "Onryo", "Les Jumeaux", "Raiju", "Obake", "Le Mimic", "Moroï", "Deogen", "Thayé"]
@@ -38,20 +22,15 @@ var state = {
     },
     "ghosts": {}
 }
-var user_settings = {
-    "num_evidences": 3,
-    "ghost_modifier": 2,
-    "volume": 50,
-    "offset": 0,
-    "sound_type": 0,
-    "speed_logic_type": 0,
-    "bpm": 0
-}
+var user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm":0,"domo_side":0}
 
 let znid = getCookie("znid")
 
 let hasLink = false;
 let hasDLLink = false;
+let markedDead = false;
+let polled = false;
+let filter_locked = false;
 
 function waitForElementById(id) {
     let wait_for_element = () => {
@@ -195,15 +174,16 @@ function tristate(elem, ignore_link = false) {
     if(!ignore_link){filter(ignore_link)}
 }
 
-function select(elem, ignore_link = false) {
-    if ($(elem).hasClass("faded")) {
-        fade(elem, ignore_link)
+function select(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
+        fade(elem,ignore_link)
     }
 
     var on = $(elem).hasClass("selected")
+    var switch_type = $(elem).hasClass("died")
 
     for (const [key, value] of Object.entries(state["ghosts"])){ 
-        if(value == 2){
+        if(value == 2 || value == -2){
             state['ghosts'][key] = 1
             document.getElementById(key).className = "ghost_card"
         }
@@ -211,19 +191,88 @@ function select(elem, ignore_link = false) {
 
     if (on){
         $(elem).removeClass(["selected"]);
+        if (!ignore_link || internal) markedDead = false
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
     }
     else{
-        $(elem).removeClass("permhidden")
+        $(elem).removeClass(["died","guessed","permhidden"])
         $(elem).addClass("selected");
+        if (!ignore_link || internal) markedDead = false
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 2;
     }
     setCookie("state",JSON.stringify(state),1)
-    if(!ignore_link){filter(ignore_link)}
+    if(!ignore_link && !switch_type){filter(ignore_link)}
+
+    if(polled && !ignore_link){resetResetButton()}
 }
 
-function fade(elem, ignore_link = false) {
-    $(elem).removeClass("selected")
+function guess(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
+        fade(elem,ignore_link)
+    }
+
+    var on = false
+    if (!ignore_link || internal){
+
+        on = $(elem).hasClass("guessed")
+
+        for (const [key, value] of Object.entries(state["ghosts"])){ 
+            if(value == 3){
+                state['ghosts'][key] = 1
+                document.getElementById(key).className = "ghost_card"
+            }
+        }
+    }
+
+    if (on){
+        $(elem).removeClass("guessed");
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
+    }
+    else{
+        $(elem).removeClass(["selected","died","permhidden"])
+        $(elem).addClass("guessed");
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 3;
+    }
+    setCookie("state",JSON.stringify(state),1)
+    if(!ignore_link){filter(ignore_link)}
+
+}
+
+function died(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
+        fade(elem,ignore_link)
+    }
+
+    var on = $(elem).hasClass("died")
+    var switch_type = $(elem).hasClass("selected")
+
+    for (const [key, value] of Object.entries(state["ghosts"])){ 
+        if(value == 2 || value == -2){
+            state['ghosts'][key] = 1
+            document.getElementById(key).className = "ghost_card"
+        }
+    }
+
+    if (on){
+        $(elem).removeClass(["selected","died"]);
+        if (!ignore_link || internal) markedDead = false
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
+    }
+    else{
+        $(elem).removeClass(["selected","guessed","permhidden"])
+        $(elem).addClass("died");
+        if (!ignore_link || internal) markedDead = true
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = -2;
+    }
+    setCookie("state",JSON.stringify(state),1)
+    if(!ignore_link && !switch_type){filter(ignore_link)}
+
+    if(polled && !ignore_link){resetResetButton()}
+}
+
+function fade(elem,ignore_link=false){
+
+    $(elem).removeClass(["selected","guessed","died"])
 
     if (state["ghosts"][$(elem).find(".ghost_name")[0].innerText] != 0){
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 0;
@@ -240,7 +289,7 @@ function fade(elem, ignore_link = false) {
     if (!ignore_link){filter(ignore_link)}
 }
 
-function remove(elem, ignore_link = false) {
+function remove(elem,ignore_link=false){
     state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = -1;
     $(elem).find(".ghost_name").removeClass("strike");
     $(elem).removeClass(["selected","guessed","died","faded"]);
@@ -282,7 +331,6 @@ function filter(ignore_link = false) {
     var base_speed = 1.7;
     var ghost_array = [];
     var evi_array = [];
-
     var not_evi_array = [];
     var spe_array = [];
     var san_array = [];
@@ -330,24 +378,24 @@ function filter(ignore_link = false) {
 
 
     // Filter other evidences
-    for (var i = 0; i < all_evidence.length; i++) {
+    for (var i = 0; i < all_evidence.length; i++){
         var checkbox = document.getElementById(all_evidence[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block", "disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
-    // Filter other evidences
-    for (var i = 0; i < all_speed.length; i++) {
+    // Filter other speeds
+    for (var i = 0; i < all_speed.length; i++){
         var checkbox = document.getElementById(all_speed[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block", "disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
-    // Filter other evidences
-    for (var i = 0; i < all_sanity.length; i++) {
+    // Filter other sanities
+    for (var i = 0; i < all_sanity.length; i++){
         var checkbox = document.getElementById(all_sanity[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block", "disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
 
@@ -642,27 +690,30 @@ function filter(ignore_link = false) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
             })
         }
-    } else if (num_evidences == "2") {
+    }
+
+    else if (num_evidences == "2"){
         var keep_evi = evi_array
         if (keep_evi.length == 3) {
             all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
             })
-        } else if (keep_evi.length == 2) {
+        } 
+        else if (keep_evi.length == 2) {
             if (keep_evi.every(x => mimic_evi.includes(x))) {
                 mimic_evi.pop(mimic_nm_evi)
                 if (keep_evi.every(x => mimic_evi.includes(x))) {
@@ -677,8 +728,8 @@ function filter(ignore_link = false) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
@@ -688,22 +739,24 @@ function filter(ignore_link = false) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
             })
         }
-    } else if (num_evidences == "1") {
+    }
+
+    else if (num_evidences == "1"){
         var keep_evi = evi_array
         if (keep_evi.length == 2) {
             all_evidence.filter(evi => !keep_evi.includes(evi)).forEach(function(item) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
@@ -723,8 +776,8 @@ function filter(ignore_link = false) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
@@ -734,8 +787,8 @@ function filter(ignore_link = false) {
                 if (!not_evi_array.includes(item)) {
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-                    $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+                    $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
                 }
@@ -745,8 +798,8 @@ function filter(ignore_link = false) {
         all_evidence.filter(evi => evi != 'Orbe').forEach(function(item) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
-            $(checkbox).find("#checkbox").removeClass(["good", "bad"])
-            $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+            $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+            $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
             $(checkbox).find(".label").addClass("disabled-text")
             $(checkbox).find(".label").removeClass("strike")
         })
@@ -812,19 +865,22 @@ function filter(ignore_link = false) {
         }
     })
 
-    var monkey_checkbox = document.getElementById(monkey_evi);
-    $(monkey_checkbox).addClass("block")
-    $(monkey_checkbox).find("#checkbox").removeClass(["good", "bad"])
-    $(monkey_checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
-    $(monkey_checkbox).find(".label").addClass("disabled-text")
-    $(monkey_checkbox).find(".label").removeClass("strike")
+    // Monkey Checkbox checks
+    if(monkey_evi){
+        var monkey_checkbox = document.getElementById(monkey_evi);
+        $(monkey_checkbox).addClass("block")
+        $(monkey_checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+        $(monkey_checkbox).find("#checkbox").addClass(["neutral","disabled"])
+        $(monkey_checkbox).find(".label").addClass("disabled-text")
+        $(monkey_checkbox).find(".label").removeClass("strike")
+    }
 
     if (evi_array.length > 0 || not_evi_array.length > 0) {
         all_speed.filter(spe => !keep_speed.has(spe)).forEach(function(item) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good"])
-            $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+            $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
             $(checkbox).find(".label").addClass("disabled-text")
         })
 
@@ -832,15 +888,15 @@ function filter(ignore_link = false) {
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good"])
-            $(checkbox).find("#checkbox").addClass(["neutral", "block", "disabled"])
+            $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
             $(checkbox).find(".label").addClass("disabled-text")
         })
     }
 
-    setCookie("state", JSON.stringify(state), 1)
-    if (hasLink && !ignore_link) {
-        send_state()
-    }
+    autoSelect()
+    setCookie("state",JSON.stringify(state),1)
+    if (hasLink && !ignore_link){send_state()}
+    if (hasDLLink){send_evidence_link(); send_ghosts_link();}
 }
 
 function all_los(){
@@ -871,94 +927,183 @@ function all_not_los(){
     return true
 }
 
-function hasSelected(){
-    if(Object.keys(discord_user).length > 0){
+function autoSelect(){
+
+    if(hasDLLink){
+        var cur_selected = []
+        var has_selected = false
+        var selected = "";
+        var died = "";
+        var guessed = "";
         var ghosts = document.getElementsByClassName("ghost_card")
         for (var i = 0; i < ghosts.length; i++){
-            if(ghosts[i].className.includes("selected") || ghosts[i].className.includes("died")){
-                return true
+            if($(ghosts[i]).hasClass("selected")){
+                has_selected = true
+                selected = ghosts[i].id;
+            }
+            else if($(ghosts[i]).hasClass("died")){
+                has_selected = true
+                died = ghosts[i].id;
+            }
+            else if($(ghosts[i]).hasClass("guessed")){
+                has_selected = true
+                guessed = ghosts[i].id;
+            }
+            else if(
+                !$(ghosts[i]).hasClass("faded") && 
+                !$(ghosts[i]).hasClass("hidden") && 
+                !$(ghosts[i]).hasClass("permhidden")
+            ){
+                cur_selected.push(i)
             }
         }
+
+        if (!has_selected && cur_selected.length == 1){
+            send_ghost_link(ghosts[cur_selected[0]].id,2)
+        }
+        else{
+            if (selected != ""){
+                send_ghost_link(selected,2)
+            }
+            else if(died != ""){
+                send_ghost_link(died,-1)
+            }
+            else if (guessed != ""){
+                send_ghost_link(guessed,1)
+            }
+            else{
+                send_ghost_link("",0)
+            }
+        }
+
+        setCookie("state",JSON.stringify(state),1)
     }
-    return false
+    resetResetButton()
 }
 
-function showInfo() {
+function hasSelected(){
+    return true
+}
 
-    if (!$("#blackout").is(":visible")) {
+function checkResetButton(){
+    return
+}
+
+function resetResetButton(){
+    $("#reset").removeClass("reset_pulse")
+    $("#reset").addClass("standard_reset")
+    $("#reset").html(polled ? "Waiting for others..." : "Reset")
+    $("#reset").attr("ondblclick",null)
+    $("#reset").attr("onclick","reset()")
+}
+
+function showInfo(){
+
+    if (!$("#blackout").is(":visible")){
         set_sparkle(false)
         initSparkling()
-    } else {
+    }
+    else{
         set_sparkle(true)
     }
 
     $("#blackout").fadeToggle(400)
 }
 
-function showVoiceInfo() {
+function showVoiceInfo(){
     $("#blackout_voice").fadeToggle(400)
 }
 
-function showSettings() {
-    if (document.getElementById("settings_box").style.left == "-32px") {
+function showSettings(){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("settings_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "-32px")){
         document.getElementById("settings_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("settings_tab").style.boxShadow = "-6px 5px 5px -2px #000"
-        document.getElementById("event_box").style.zIndex = "1"
-        document.getElementById("wiki_box").style.zIndex = "1"
-        document.getElementById("maps_box").style.zIndex = "1"
-        document.getElementById("settings_box").style.zIndex = "2"
-        document.getElementById("settings_box").style.left = "196px"
-    } else {
-        document.getElementById("settings_box").style.left = "-32px"
+        document.getElementById("event_box").style.zIndex= "1"
+        document.getElementById("wiki_box").style.zIndex= "1"
+        document.getElementById("maps_box").style.zIndex= "1"
+        document.getElementById("settings_box").style.zIndex = (mquery.matches ? "10" : "2")
+        document.getElementById("settings_box").style.left = (mquery.matches ? "0px" : "196px")
+    }
+    else {
+        document.getElementById("settings_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "-32px")
         document.getElementById("settings_box").style.boxShadow = "none"
         document.getElementById("settings_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
-function showEvent() {
-    if (document.getElementById("event_box").style.left == "-182px") {
+function showEvent(){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("event_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "-182px")){
         document.getElementById("event_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("event_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
-        document.getElementById("wiki_box").style.zIndex = "1"
-        document.getElementById("maps_box").style.zIndex = "1"
-        document.getElementById("event_box").style.zIndex = "2"
-        document.getElementById("event_box").style.left = "196px"
-    } else {
-        document.getElementById("event_box").style.left = "-182px"
+        document.getElementById("wiki_box").style.zIndex= "1"
+        document.getElementById("maps_box").style.zIndex= "1"
+        document.getElementById("event_box").style.zIndex= (mquery.matches ? "10" : "2")
+        document.getElementById("event_box").style.left = (mquery.matches ? "0px" : "196px")
+    }
+    else {
+        document.getElementById("event_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "-182px")
         document.getElementById("event_box").style.boxShadow = "none"
         document.getElementById("event_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
-function showWiki() {
-    if (document.getElementById("wiki_box").style.left == "-182px") {
+function showWiki(){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("wiki_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "-182px")){
         document.getElementById("wiki_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("wiki_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
-        document.getElementById("event_box").style.zIndex = "1"
-        document.getElementById("maps_box").style.zIndex = "1"
-        document.getElementById("wiki_box").style.zIndex = "2"
-        document.getElementById("wiki_box").style.left = "196px"
-    } else {
-        document.getElementById("wiki_box").style.left = "-182px"
+        document.getElementById("event_box").style.zIndex= "1"
+        document.getElementById("maps_box").style.zIndex= "1"
+        document.getElementById("wiki_box").style.zIndex= (mquery.matches ? "10" : "2")
+        document.getElementById("wiki_box").style.left = (mquery.matches ? "0px" : "196px")
+    }
+    else {
+        document.getElementById("wiki_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "-182px")
         document.getElementById("wiki_box").style.boxShadow = "none"
         document.getElementById("wiki_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
 
-function showMaps() {
-    if (document.getElementById("maps_box").style.left == "-388px") {
+function showMaps(forceOpen = false, forceClose = false){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if(mquery.matches){
+        return
+    }
+
+    if (document.getElementById("maps_box").style.left == "-388px" && !forceClose){
         document.getElementById("maps_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("maps_box").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
-        document.getElementById("event_box").style.zIndex = "1"
-        document.getElementById("wiki_box").style.zIndex = "1"
-        document.getElementById("maps_box").style.zIndex = "2"
+        document.getElementById("event_box").style.zIndex= "1"
+        document.getElementById("wiki_box").style.zIndex= "1"
+        document.getElementById("maps_box").style.zIndex= "2"
         document.getElementById("maps_box").style.left = "196px"
         document.getElementById("maps_box").style.width = "calc(100% - 256px)"
-    } else {
+    }
+    else if(!forceOpen) {
         document.getElementById("maps_box").style.width = "556px"
         document.getElementById("maps_box").style.left = "-388px"
         document.getElementById("maps_box").style.boxShadow = "none"
@@ -966,7 +1111,21 @@ function showMaps() {
     }
 }
 
-function flashMode() {
+function showNews(){
+    if (document.getElementById("news_box").style.right == "-366px"){
+        document.getElementById("news_box").style.boxShadow = "-5px 0px 10px 0px #000"
+        document.getElementById("news_tab").style.boxShadow = "-5px 6px 5px -2px #000"
+        document.getElementById("news_box").style.right = "0px"
+        mark_feed_read()
+    }
+    else {
+        document.getElementById("news_box").style.right = "-366px"
+        document.getElementById("news_box").style.boxShadow = "none"
+        document.getElementById("news_box").style.boxShadow = "none"
+    }
+}
+
+function flashMode(){
     var cur_evidence = parseInt(document.getElementById("num_evidence").value)
     var mode_text = ["Apocalypse", "Démence", "Cauchemar", "Professionel"][cur_evidence]
     document.getElementById("game_mode").innerHTML = `${mode_text}<span>(${cur_evidence} preuve)</span>`
@@ -977,44 +1136,53 @@ function flashMode() {
 
 function saveSettings(reset = false) {
     user_settings['volume'] = parseInt(document.getElementById("modifier_volume").value)
-    user_settings['offset'] = parseInt(document.getElementById("offset_value").innerText.replace(/\d+(?:-\d+)+/g, ""))
+    user_settings['mute_timer_toggle'] = document.getElementById("mute_timer_toggle").checked ? 1 : 0;
+    user_settings['mute_timer_countdown'] = document.getElementById("mute_timer_countdown").checked ? 1 : 0;
+    user_settings['offset'] = parseInt(document.getElementById("offset_value").innerText.replace(/\d+(?:-\d+)+/g,""))
     user_settings['ghost_modifier'] = parseInt(document.getElementById("ghost_modifier_speed").value)
     user_settings['num_evidences'] = parseInt(document.getElementById("num_evidence").value)
     user_settings['sound_type'] = document.getElementById("modifier_sound_type").checked ? 1 : 0;
     user_settings['speed_logic_type'] = document.getElementById("speed_logic_type").checked ? 1 : 0;
     user_settings['bpm_type'] = document.getElementById("bpm_type").checked ? 1 : 0;
     user_settings['bpm'] = reset ? 0 : parseInt(document.getElementById('input_bpm').innerHTML.split("<br>")[0])
-    setCookie("settings", JSON.stringify(user_settings), 30)
+    user_settings['domo_side'] = $("#domovoi").hasClass("domovoi-flip") ? 1 : 0;
+    setCookie("settings",JSON.stringify(user_settings),30)
 }
 
 function loadSettings() {
     try {
         user_settings = JSON.parse(getCookie("settings"))
     } catch (error) {
-        user_settings = {
-            "num_evidences": 3,
-            "ghost_modifier": 2,
-            "volume": 50,
-            "offset": 0,
-            "sound_type": 0,
-            "speed_logic_type": 0,
-            "bpm_type": 0,
-            "bpm": 0
-        }
+        user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0,"domo_side":0}
     }
     document.getElementById("modifier_volume").value = user_settings['volume'] ?? 50
+    document.getElementById("mute_timer_toggle").checked = user_settings['mute_timer_toggle'] ?? 0 == 1
+    document.getElementById("mute_timer_countdown").checked = user_settings['mute_timer_countdown'] ?? 0 == 1
     document.getElementById("offset_value").innerText = ` ${user_settings['offset'] ?? 0}% `
     document.getElementById("ghost_modifier_speed").value = user_settings['ghost_modifier'] ?? 2
     document.getElementById("num_evidence").value = user_settings['num_evidences'] ?? 3
     document.getElementById("modifier_sound_type").checked = user_settings['sound_type'] ?? 0 == 1
     document.getElementById("speed_logic_type").checked = user_settings['speed_logic_type'] ?? 0 == 1
     document.getElementById("bpm_type").checked = user_settings['bpm_type'] ?? 0 == 1
+    if (user_settings['domo_side'] == 1){
+        $("#domovoi").addClass("domovoi-flip")
+        $("#domovoi-img").addClass("domovoi-img-flip")
+    }
 
     if ((user_settings['bpm'] ?? 0) > 0) {
         document.getElementById('input_bpm').innerHTML = `${user_settings['bpm']}<br>bpm`
         var cms = document.getElementById("bpm_type").checked ? get_ms(user_settings['bpm']) : get_ms_exact(user_settings['bpm'])
         document.getElementById('input_speed').innerHTML = `${cms}<br>m/s`;
-        mark_ghosts(cms)
+        try{
+            mark_ghosts(cms)
+        } catch(Error){
+            // Om nom nom
+        }
+        try{
+            mark_ghost_details(cms)
+        } catch(Error){
+            // Om nom nom
+        }
     }
 
     setCookie("settings", JSON.stringify(user_settings), 30)
@@ -1026,32 +1194,25 @@ function loadSettings() {
     flashMode()
 }
 
-function resetSettings() {
-    user_settings = {
-        "num_evidences": 3,
-        "ghost_modifier": 2,
-        "volume": 50,
-        "offset": 0,
-        "sound_type": 0,
-        "speed_logic_type": 0,
-        "bpm_type": 0,
-        "bpm": 0
-    }
+function resetSettings(){
+    user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0}
     document.getElementById("modifier_volume").value = user_settings['volume']
+    document.getElementById("mute_timer_toggle").checked = user_settings['mute_timer_toggle'] == 1
+    document.getElementById("mute_timer_countdown").checked = user_settings['mute_timer_countdown'] == 1
     document.getElementById("offset_value").innerText = ` ${user_settings['offset']}% `
     document.getElementById("ghost_modifier_speed").value = user_settings['ghost_modifier']
     document.getElementById("num_evidence").value = user_settings['num_evidences']
     document.getElementById("modifier_sound_type").checked = user_settings['sound_type'] == 1
     document.getElementById("speed_logic_type").checked = user_settings['speed_logic_type'] == 1
     document.getElementById("bpm_type").checked = user_settings['bpm_type'] == 1
-    setCookie("settings", JSON.stringify(user_settings), 30)
+    setCookie("settings",JSON.stringify(user_settings),30)
 }
 
-function changeMap(elem, map) {
+function changeMap(elem,map){
 
     $(".maps_button").removeClass("selected_map")
     $(elem).addClass("selected_map")
-    $(".map_image").css("background-image", "url(https://zero-network.net/phasmophobia/static/imgs/maps/" + map + ")")
+    $(".map_image").css("background-image","url(https://zero-network.net/phasmophobia/static/imgs/maps/"+map+")")
 }
 
 function zoomMap(elem) {
@@ -1083,26 +1244,28 @@ function setSpeedLogicType() {
     snd_choice = document.getElementById("speed_logic_type").checked ? 1 : 0;
 }
 
-function reset(skip_continue_session = false) {
-    if (!skip_continue_session) {
-        continue_session()
-    }
-    state['settings'] = JSON.stringify(user_settings)
-    saveSettings(true)
+function reset(skip_continue_session=false){
 
-    fetch("https://zero-network.net/zn/" + znid + "/end", {
-            method: "POST",
-            body: JSON.stringify(state),
-            signal: AbortSignal.timeout(2000)
-        })
+    var ready = true
+    if(!skip_continue_session){
+        ready = continue_session()
+    }
+
+    if(ready){
+        send_reset_link()
+        state['settings'] = JSON.stringify(user_settings)
+        saveSettings(true)
+
+        fetch("https://zero-network.net/zn/"+znid+"/end",{method:"POST",body:JSON.stringify(state),signal: AbortSignal.timeout(2000)})
         .then((response) => {
-            setCookie("znid", znid, -1)
-            setCookie("state", JSON.stringify(state), -1)
+            setCookie("znid",znid,-1)
+            setCookie("state",JSON.stringify(state),-1)
             location.reload()
         })
         .catch((response) => {
-            setCookie("znid", znid, -1)
-            setCookie("state", JSON.stringify(state), -1)
+            setCookie("znid",znid,-1)
+            setCookie("state",JSON.stringify(state),-1)
             location.reload()
         });
+    }
 }
