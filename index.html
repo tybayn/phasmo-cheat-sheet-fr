@@ -3,8 +3,7 @@
     <title>Guide Phasmophobia (non officiel)</title>
 
     <link rel="icon" type="image/x-icon" href="https://zero-network.net/phasmophobia/static/imgs/favicon.ico">
-    <meta name="Description" content="Le guide non officiel Phasmo est l'aide-mémoire ultime pour le jeu vidéo d'horreur populaire Phasmophobia. Il comprend des fonctionnalités telles que la fréquence des pas, lien avec un journal partagé, lien avec l'application de bureau, et bien plus encore, pour vous aider à mieux réussir cos chasses aux fantômes."
-    />
+    <meta name="Description" content="Le guide non officiel Phasmo est l'aide-mémoire ultime pour le jeu vidéo d'horreur populaire Phasmophobia. Il comprend des fonctionnalités telles que la fréquence des pas, lien avec un journal partagé, lien avec l'application de bureau, et bien plus encore, pour vous aider à mieux réussir cos chasses aux fantômes." />
     <meta name="viewport" content="user-scalable=no" />
     <script>
         AbortSignal.timeout = ms => {
@@ -12,6 +11,7 @@
             setTimeout(() => controller.abort(), ms);
             return controller.signal;
         };
+
     </script>
     <script src="jquery/jquery-3.6.2.min.js"></script>
     <script src="scripts/ghost_template.js"></script>
@@ -85,9 +85,9 @@
 
                     <li>"vitesse &lt;vitesse&gt;" -> Marquer la vitesse spécifiée</li>
                     <li>"vitesse effacer &lt;vitesse&gt;" -> Réinitialiser l'état de la vitesse spécifiée</li>
-                    <li>"speed [has] line of sight" -> Mark having standard line-of-sight speed up</li>
-                    <li>"speed not line of sight" -> Mark no standard line-of-sight speed up</li>
-                    <li>"speed clear line of sight" -> Reset line-of-sight filter</li>
+                    <li>"vitesse ligne de vue" -> Marque l'entité comme accélérant dans ligne de vue</li>
+                    <li>"vitesse pas ligne de vue" -> Marque l'entité comme n'accélérant pas dans ligne de vue</li>
+                    <li>"vitesse annuler ligne de vue" -> Réinitialise le filtre "ligne de vue"</li>
                 </ul>
                 <hr>
                 <strong>Seuil de chasse :</strong>
@@ -102,7 +102,7 @@
                     <li>"entité annuler &lt;entité&gt;" -> Réinitialiser l'état de type d'entité (hors types cachés)</li>
                     <li>"entité choisir &lt;entité&gt;" -> Sélectionner/mettre en surbrillance le type d'entité spécifié</li>
                     <li>"entité rayer &lt;entité&gt;" -> Supprimez le type d'entité spécifié de l'écran</li>
-                    <li>"ghost show|info &lt;ghost&gt;" -> Scroll the specified ghost card into view</li>
+                    <li>"entité voir|info &lt;entité&gt;" -> Faire défilier la carte de l'entité spécifiée dans la vue</li>
                 </ul>
                 <hr>
                 <strong>Minuteur :</strong>
@@ -117,8 +117,8 @@
                 <ul>
                     <li>"afficher filtres" ou "afficher outils" -> Modifier le menu pour afficher les filtres/outils</li>
                     <li>"vitesse entité &lt;pourcentage&gt;" -> Régler le modificateur de vitesse des fantômes sur 50 %, 75 %, 100 %, 125 % ou 150 %</li>
-                    <li>"show map [&lt;map name&gt;]" -> Opens the map tab and displays map</li>
-                    <li>"close map" or "hide map" -> Closes the map tab</li>
+                    <li>"voir carte [&lt;nom de la carte&gt;]" -> Ouvrir l'onglet carte et afficher cette carte</li>
+                    <li>"fermer carte" ou "cacher carte" -> Fermer l'onglet carte</li>
                     <li>"réinitialiser journal" -> Réinitialiser l'aide-mémoire (sauvegardé s'il est lié à Discord)</li>
                     <li>"arrêter reconnaissance vocale" -> Arrêtez la reconnaissance vocale</li>
                 </ul>
@@ -151,10 +151,10 @@
                 <div class="modifier_volume_label">100%</div>
             </div>
             <div class="modifier_note">
-                <input type="checkbox" id="mute_timer_countdown" name="mute_timer_countdown" class="settings_check" onclick="mute('countdown');saveSettings();"><label for="mute_timer_countdown">Mute Timer Countdown</label>
+                <input type="checkbox" id="mute_timer_countdown" name="mute_timer_countdown" class="settings_check" onclick="mute('countdown');saveSettings();"><label for="mute_timer_countdown">Décompte de minuteur silencieux</label>
             </div>
             <div class="modifier_note less_pad">
-                <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Mute Timer Toggle</label>
+                <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Lancement de minuteur silencieux</label>
             </div>
             <hr>
             <div class="modifier_volume yfont white">Décalage vitesse de pas</div>
@@ -241,7 +241,8 @@
     </div>
 
     <div id="wiki_box" style="left:-1000px;">
-        <div id="wiki_tab" onclick="showWiki();setFlicker();">Guides<div id="guide_tab_footstep" style="display: none;"></div></div>
+        <div id="wiki_tab" onclick="showWiki();setFlicker();">Guides<div id="guide_tab_footstep" style="display: none;"></div>
+        </div>
         <span class="icon" onclick="showWiki();setFlicker();"></span>
         <div class="settings_title yfont white">Guides</div>
         <div id="wiki-body" class="info_block"></div>
@@ -258,22 +259,54 @@
         </div>
         <div class="maps_credit">Les images de carte appartiennent à <a href="https://www.reddit.com/user/Fantismal" target="_blank">Fantismal</a> (<a href="https://imgur.com/a/iEI0tJo" target="_blank">Images</a>)</div>
         <div class="maps_buttons">
-            <button class="maps_button selected_map" id="tanglewood" onclick="changeMap(this,'tanglewood.png')"><div class="map_size s">S</div>6 Tanglewood Drive</button>
-            <button class="maps_button" id="edgefield" onclick="changeMap(this,'edgefield.png')"><div class="map_size s">S</div>42 Edgefield Road</button>
-            <button class="maps_button" id="ridgeview" onclick="changeMap(this,'ridgeview.png')"><div class="map_size s">S</div>10 Ridgeview Court</button>
-            <button class="maps_button" id="grafton" onclick="changeMap(this,'grafton.png')"><div class="map_size s">S</div>Grafton Farmhouse</button>
-            <button class="maps_button" id="willow" onclick="changeMap(this,'willow.png')"><div class="map_size s">S</div>13 Willow Street</button>
-            <button class="maps_button" id="brownstone" onclick="changeMap(this,'brownstone.png')"><div class="map_size l">L</div>Brownstone High School</button>
-            <button class="maps_button" id="bleasdale" onclick="changeMap(this,'bleasdale.png')"><div class="map_size s">S</div>Bleasdale Farmhouse</button>
-            <button class="maps_button" id="sunnymeadows" onclick="changeMap(this,'sunnymeadows.png')"><div class="map_size l">L</div>Sunny Meadows</button>
-            <button class="maps_button" id="sunnymeadows_courtyard" onclick="changeMap(this,'sunnymeadows_courtyard.png')"><div class="map_size s">S</div>SM Restricted - Courtyard</button>
-            <button class="maps_button" id="sunnymeadows_male" onclick="changeMap(this,'sunnymeadows_male.png')"><div class="map_size s">S</div>SM Restricted - Male Wing</button>
-            <button class="maps_button" id="sunnymeadows_female" onclick="changeMap(this,'sunnymeadows_female.png')"><div class="map_size s">S</div>SM Restricted - Female Wing</button>
-            <button class="maps_button" id="sunnymeadows_hospital" onclick="changeMap(this,'sunnymeadows_hospital.png')"><div class="map_size s">S</div>SM Restricted - Hospital</button>
-            <button class="maps_button" id="sunnymeadows_restricted" onclick="changeMap(this,'sunnymeadows_restricted.png')"><div class="map_size s">S</div>SM Restricted - Restricted</button>
-            <button class="maps_button" id="prison" onclick="changeMap(this,'prison.png')"><div class="map_size m">M</div>Prison</button>
-            <button class="maps_button" id="maplelodge" onclick="changeMap(this,'maplelodge.png')"><div class="map_size m">M</div>Maple Lodge Campsite</button>
-            <button class="maps_button" id="woodwind" onclick="changeMap(this,'woodwind.png')"><div class="map_size s">S</div>Camp Woodwind</button>
+            <button class="maps_button selected_map" id="tanglewood" onclick="changeMap(this,'tanglewood.png')">
+                <div class="map_size s">S</div>6 Tanglewood Drive
+            </button>
+            <button class="maps_button" id="edgefield" onclick="changeMap(this,'edgefield.png')">
+                <div class="map_size s">S</div>42 Edgefield Road
+            </button>
+            <button class="maps_button" id="ridgeview" onclick="changeMap(this,'ridgeview.png')">
+                <div class="map_size s">S</div>10 Ridgeview Court
+            </button>
+            <button class="maps_button" id="grafton" onclick="changeMap(this,'grafton.png')">
+                <div class="map_size s">S</div>Grafton Farmhouse
+            </button>
+            <button class="maps_button" id="willow" onclick="changeMap(this,'willow.png')">
+                <div class="map_size s">S</div>13 Willow Street
+            </button>
+            <button class="maps_button" id="brownstone" onclick="changeMap(this,'brownstone.png')">
+                <div class="map_size l">L</div>Brownstone High School
+            </button>
+            <button class="maps_button" id="bleasdale" onclick="changeMap(this,'bleasdale.png')">
+                <div class="map_size s">S</div>Bleasdale Farmhouse
+            </button>
+            <button class="maps_button" id="sunnymeadows" onclick="changeMap(this,'sunnymeadows.png')">
+                <div class="map_size l">L</div>Sunny Meadows
+            </button>
+            <button class="maps_button" id="sunnymeadows_courtyard" onclick="changeMap(this,'sunnymeadows_courtyard.png')">
+                <div class="map_size s">S</div>SM Restricted - Courtyard
+            </button>
+            <button class="maps_button" id="sunnymeadows_male" onclick="changeMap(this,'sunnymeadows_male.png')">
+                <div class="map_size s">S</div>SM Restricted - Male Wing
+            </button>
+            <button class="maps_button" id="sunnymeadows_female" onclick="changeMap(this,'sunnymeadows_female.png')">
+                <div class="map_size s">S</div>SM Restricted - Female Wing
+            </button>
+            <button class="maps_button" id="sunnymeadows_hospital" onclick="changeMap(this,'sunnymeadows_hospital.png')">
+                <div class="map_size s">S</div>SM Restricted - Hospital
+            </button>
+            <button class="maps_button" id="sunnymeadows_restricted" onclick="changeMap(this,'sunnymeadows_restricted.png')">
+                <div class="map_size s">S</div>SM Restricted - Restricted
+            </button>
+            <button class="maps_button" id="prison" onclick="changeMap(this,'prison.png')">
+                <div class="map_size m">M</div>Prison
+            </button>
+            <button class="maps_button" id="maplelodge" onclick="changeMap(this,'maplelodge.png')">
+                <div class="map_size m">M</div>Maple Lodge Campsite
+            </button>
+            <button class="maps_button" id="woodwind" onclick="changeMap(this,'woodwind.png')">
+                <div class="map_size s">S</div>Camp Woodwind
+            </button>
         </div>
     </div>
 
@@ -364,7 +397,7 @@
             </div>
             <div id="filter-content" class="filter-content">
                 <div class="evidence_title yfont white">
-                    Preuve <select name="num_evidence" id="num_evidence" class="num_evidence" onchange="filter();flashMode();saveSettings();">
+                    Preuves <select name="num_evidence" id="num_evidence" class="num_evidence" onchange="filter();flashMode();saveSettings();">
                         <option value="3">3</option>
                         <option value="2">2</option>
                         <option value="1">1</option>
@@ -427,11 +460,13 @@
 
         </div>
 
-        <div id="cards" class="cards"><div class="dot-flashing"></div></div>
+        <div id="cards" class="cards">
+            <div class="dot-flashing"></div>
+        </div>
     </div>
 
     <div id="domovoi" style="display: none;">
-        <div id="domovoi-text" style="display: none;">Bonjour! Je suis Domo !</div>
+        <div id="domovoi-text" style="display: none;">Bonjour ! Je suis Domo !</div>
         <img id="domovoi-img" src="imgs/domovoi.png" onmouseenter="domovoi_show_last()" onmouseleave="domovoi_hide_last()" ondblclick="domovoi_print_logs()">
     </div>
     <div id="eye" onclick="revive()"><img src="imgs/eye.png"></div>
@@ -439,18 +474,18 @@
 
     <script>
         mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
-        if(mquery.matches){
+        if (mquery.matches) {
             document.getElementById("settings_box").style.left = "calc(-60% - 40px)";
             document.getElementById("event_box").style.left = "calc(-60% - 40px)";
             document.getElementById("wiki_box").style.left = "calc(-60% - 40px)";
             document.getElementById("maps_box").style.left = "calc(-60% - 40px)";
-        }
-        else{
+        } else {
             document.getElementById("settings_box").style.left = "-32px";
             document.getElementById("event_box").style.left = "-182px";
             document.getElementById("wiki_box").style.left = "-182px";
             document.getElementById("maps_box").style.left = "-388px";
         }
+
     </script>
     <script src="scripts/metronome.js"></script>
     <script src="scripts/timer.js"></script>
@@ -469,18 +504,23 @@
                 resolve("Ghost data loaded")
             })
             Promise.all([load_wiki])
-            .then(x => {
-                loadAllAndConnect()
-                if(getCookie("voice_recognition_on")){
-                    start_voice()
-                }
-                setInterval(function(){
-                    if(!document.hidden){
-                        try{heartbeat()} catch(Error){console.error("Heartbeat failed!")}
+                .then(x => {
+                    loadAllAndConnect()
+                    if (getCookie("voice_recognition_on")) {
+                        start_voice()
                     }
-                }, 300000)
-            })
+                    setInterval(function() {
+                        if (!document.hidden) {
+                            try {
+                                heartbeat()
+                            } catch (Error) {
+                                console.error("Heartbeat failed!")
+                            }
+                        }
+                    }, 300000)
+                })
         });
+
     </script>
 
 </body>

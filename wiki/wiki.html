@@ -1,16 +1,17 @@
-<div class="wiki_title accordian" onclick="accordian(this)">Additional Ghost Data</div>
+<div class="wiki_title accordian" onclick="accordian(this)">A savoir sur les entités</div>
 <div class="wiki_details" style="height: 0px;">
-    <h3>Obake Fingerprints</h3>
-    <div class="text">Obake has a 25% chance to <i>not</i> leave UV evidence and has the ability to make UV evidence disappear faster.</div>
-    <div class="text">This ghost also has a chance to leave behind unique finger/handprints:</div>
-    <h4>6 Fingered Handprint (Doors, Windows, Coolers)</h4>
+    <h3>Obake - Empreintes</h3>
+    <div class="text">L'Obake a 25% de chance de <i>ne pas</i> laisser d'empreintes et a la capacité de faire disparaître les empreintes UV plus rapidement.</div>
+    <div class="text">Ce fantôme peut également laisser des empreintes de doigts/mains uniques :</div>
+    <h4>Empreinte de main à 6 doigts (portes, fenêtres, glacières)</h4>
     <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/obake_hand.png" style="max-width: 50%; padding: 10px;">
-    <h4>Double Fingerprint (Light Switches)</h4>
+    <h4>Double empreinte digitale (interrupteurs d'éclairage)</h4>
     <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/obake_switch.png" style="max-width: 50%; padding: 10px;">
-    <h4>5 Fingerprint (Keyboards, Cell Doors)</h4>
+    <h4>5 empreintes digitales (claviers, portes de cellules)</h4>
     <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/obake_keyboard.png" style="max-width: 50%; padding: 10px;">
 </div>
-<div class="wiki_title accordian" onclick="accordian(this)">Chasses<div id="hunts_tab_footstep" style="display: none;"></div></div>
+<div class="wiki_title accordian" onclick="accordian(this)">Chasses<div id="hunts_tab_footstep" style="display: none;"></div>
+</div>
 <div class="wiki_details" style="height: 0px;">
     <h3>Vacillement</h3>
     <div class="text">Au cours d'une chasse, les entités apparaîtront et disparaîtront, alternant entre visible et invisible plusieurs fois toutes les quelques secondes. Il y a quelques entités qui peuvent être identifiés par leur clignottement pendant une chasse : (1) un Oni sera plus visible pendant une chasse et (2) le Fantôme sera invisible pendant de plus longues périodes.</div>
@@ -36,17 +37,17 @@
         </div>
     </div>
     <hr>
-    <h3>Ghost Speed Breakdowns</h3>
-    <div class="text">Many ghosts have a range of speeds that they can be. These are usually dependant on some other factor (such as sanity or temperature) and will cause the speed to be somewhere in-between the speeds listed on the cards</div>
-    
-    <h4>Hantu Speeds</h4>
+    <h3>Variations de vitesse de l'entité</h3>
+    <div class="text">De nombreux fantômes peuvent atteindre différentes vitesses. Celles-ci dépendent généralement d'un autre facteur (tel que la santé mentale ou la température). La vitesse sera alors modifiée comme indiqué dans ces tableaux.</div>
+
+    <h4>Vitesse de l'Hantu</h4>
     <table id="hantu_speed_breakdown">
         <thead>
             <tr>
-                <th>Temp (C)</th>
-                <th>Temp (F)</th>
-                <th>Speed</th>
-                <th>Example</th>
+                <th>Temp (°C)</th>
+                <th>Temp (°F)</th>
+                <th>Vitesse</th>
+                <th>Exemple</th>
             </tr>
         </thead>
         <tr>
@@ -93,13 +94,13 @@
         </tr>
     </table>
 
-    <h4>Moroi Speeds</h4>
+    <h4>Vitesse du Moroï</h4>
     <table id="moroi_speed_breakdown">
         <thead>
             <tr>
-                <th>Average Sanity</th>
-                <th>Speed</th>
-                <th>Example</th>
+                <th>Santé mentale moyenne</th>
+                <th>Vitesse</th>
+                <th>Exemple</th>
             </tr>
         </thead>
         <tr>
@@ -152,89 +153,89 @@
             <td class="moroi_speed_item">1.5 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.5,'moroi-s10');">&#128266;</span></td>
         </tr>
-        
+
     </table>
 
-    <h4>Thaye Speeds</h4>
+    <h4>Vitesse du Thayé</h4>
     <table id="thaye_speed_breakdown">
         <thead>
             <tr>
-                <th>Aging Cycles</th>
-                <th>Time Near Ghost</th>
-                <th style="width: 25%;">Speed</th>
-                <th style="width: 25%;">Example</th>
+                <th>Cycles de vieillissement</th>
+                <th>Temps proche du fantôme</th>
+                <th style="width: 25%;">Vitesse</th>
+                <th style="width: 25%;">Exemple</th>
             </tr>
         </thead>
         <tr>
             <td>+0</td>
-            <td>0m</td>
+            <td>0min</td>
             <td class="thaye_speed_item">2.7 m/s</td>
             <td><span class="sound" onclick="toggleSound(2.7,'thaye-s1');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+1</td>
-            <td>~ 1 - 2m</td>
+            <td>~ 1 - 2min</td>
             <td class="thaye_speed_item">2.525 m/s</td>
             <td><span class="sound" onclick="toggleSound(2.525,'thaye-s2');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+2</td>
-            <td>~ 2 - 4m</td>
+            <td>~ 2 - 4min</td>
             <td class="thaye_speed_item">2.35 m/s</td>
             <td><span class="sound" onclick="toggleSound(2.35,'thaye-s3');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+3</td>
-            <td>~ 3 - 6m</td>
+            <td>~ 3 - 6min</td>
             <td class="thaye_speed_item">2.175 m/s</td>
             <td><span class="sound" onclick="toggleSound(2.175,'thaye-s4');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+4</td>
-            <td>~ 4 - 8m</td>
+            <td>~ 4 - 8min</td>
             <td class="thaye_speed_item">2.0 m/s</td>
             <td><span class="sound" onclick="toggleSound(2.0,'thaye-s5');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+5</td>
-            <td>~ 5 - 10m</td>
+            <td>~ 5 - 10min</td>
             <td class="thaye_speed_item">1.825 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.825,'thaye-s6');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+6</td>
-            <td>~ 6 - 12m</td>
+            <td>~ 6 - 12min</td>
             <td class="thaye_speed_item">1.65m/s</td>
             <td><span class="sound" onclick="toggleSound(1.65,'thaye-s7');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+7</td>
-            <td>~ 7 - 14m</td>
+            <td>~ 7 - 14min</td>
             <td class="thaye_speed_item">1.475 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.475,'thaye-s8');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+8</td>
-            <td>~ 8 - 16m</td>
+            <td>~ 8 - 16min</td>
             <td class="thaye_speed_item">1.3 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.3,'thaye-s9');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+9</td>
-            <td>~ 9 - 18m</td>
+            <td>~ 9 - 18min</td>
             <td class="thaye_speed_item">1.125 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.125,'thaye-s10');">&#128266;</span></td>
         </tr>
         <tr>
             <td>+10</td>
-            <td>~ 10 - 20m</td>
+            <td>~ 10 - 20min</td>
             <td class="thaye_speed_item">1.0 m/s</td>
             <td><span class="sound" onclick="toggleSound(1.0,'thaye-s11');">&#128266;</span></td>
         </tr>
     </table>
     <hr>
-    <h3>Ghost Ranges</h3>
-    <div class="text">During a hunt, many ghosts have different behaviors depending on how far away they are from the player. The following shows a basic radius from the player for many of the ghosts and their abilities. (Sunny Meadows shown)</div>
+    <h3>Portée de l'entité</h3>
+    <div class="text">Lors d'une chasse, de nombreux fantômes ont des comportements différents selon la distance qui les sépare du joueur. Ce qui suit montre un rayon de base autour du joueur pour de nombreux fantômes et leurs capacités. (illustré sur Sunny Meadows)</div>
     <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/hunt_ranges.png">
 </div>
 
@@ -316,14 +317,14 @@
 <div class="wiki_details" style="height: 0px;">
     <h3>Questions</h3>
     <div class="text">
-        <b>"Où êtes-vous ?"</b>
+        <b>"Où es-tu ?"</b>
         <ul>
             <li>Perte de santé mentale: 50%</li>
             <li>Renvoie la pièce dans laquelle se trouve actuellement l'entité (ne donne pas sa pièce favorite).</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Êtes-vous ici ?" / "Êtes-vous proche ?"</b>
+        <b>"Es-tu là ?" / "Es-tu proche ?"</b>
         <ul>
             <li>Perte de santé mentale: 20%</li>
             <li>Indique simplement si l'entité est dans la même pièce que la personne qui pose la question.</li>
@@ -337,7 +338,7 @@
         </ul>
     </div>
     <div class="text">
-        <b>"(Voulez-vous jouer à) cache-cache ?"</b>
+        <b>"(Veux-tu jouer à) cache-cache ?"</b>
         <ul>
             <li>Perte de santé mentale: 0% (breaks board)</li>
             <li>La Planche ouija initiera un compte à rebours de 5 à 0, avant de se briser et de démarrer une chasse maudite.</li>
@@ -351,14 +352,14 @@
         </ul>
     </div>
     <div class="text">
-        <b>"Quel âge avez-vous ?"</b>
+        <b>"Quel âge as-tu ?"</b>
         <ul>
             <li>Perte de santé mentale: 5%</li>
             <li>Indique l'âge actuel de l'entité. Si celui-ci change, c'est un Thayé.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Quand êtes-vous mort ?"</b>
+        <b>"Quand es-tu mort ?"</b>
         <ul>
             <li>Perte de santé mentale: 5%</li>
             <li>Indique un nombre généré aléatoirement entre 50 et 1000 ans.</li>
@@ -386,21 +387,21 @@
         </ul>
     </div>
     <div class="text">
-        <b>"Comment êtes-vous mort ?"</b>
+        <b>"Comment es-tu mort ?"</b>
         <ul>
             <li>Perte de santé mentale: 5%</li>
             <li>Indique la cause du décès de l'entité.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Comment allez-vous ?"</b>
+        <b>"Comment va-tu ?"</b>
         <ul>
             <li>Perte de santé mentale: 5%</li>
             <li>Retourne une émotion aléatoire.</li>
         </ul>
     </div>
     <div class="text">
-        <b>"Que voulez-vous ?""</b>
+        <b>"Que veux-tu ?""</b>
         <ul>
             <li>Perte de santé mentale: 5%</li>
             <li>Retourne une raison aléatoire.</li>
@@ -428,12 +429,12 @@
         <b>Questions sur l'agressivité :</b><br>
         <p>Les questions suivantes peuvent être posées pour renvoyer une réponse "agressive" choisie au hasard</p>
         <ul>
-            <li>"Que voulez-vous ?"</li>
-            <li>"Pourquoi êtes-vous ici ?"</li>
-            <li>"Are you angry?"</li>
+            <li>"Que veux-tu ?"</li>
+            <li>"Pourquoi es-tu ici ?"</li>
+            <li>"Es-tu en colère ?"</li>
             <li>"Devrions-nous partir ?"</li>
-            <li>"Êtes-vous amical ?"</li>
-            <li>"Voulez-vous nous blesser ?"</li>
+            <li>"Es-tu amical ?"</li>
+            <li>"Veux-tu nous blesser ?"</li>
         </ul>
         Réponses :
         <ul>
@@ -444,12 +445,12 @@
         <b>Questions sur l'emplacement:</b><br>
         <p>Les questions suivantes peuvent être posées pour indiquer à quel point vous êtes proche du fantôme et si le fantôme se trouve dans la même pièce.</p>
         <ul>
-            <li>"Où êtes-vous ?"</li>
-            <li>"Êtes-vous proche ?"</li>
+            <li>"Où es-tu ?"</li>
+            <li>"Es-tu proche ?"</li>
             <li>"Donnez-nous un signe."</li>
-            <li>"Êtes-vous ici ?"</li>
+            <li>"Es-tu ici ?"</li>
             <li>"Y a-t-il un fantôme ici ?"</li>
-            <li>"Quel est votre emplacement ?"</li>
+            <li>"Quel est ton emplacement ?"</li>
         </ul>
         Réponses :
         <ul>
@@ -461,10 +462,10 @@
         <b>Questions sur l'âge:</b><br>
         <p>Les questions suivantes peuvent être posées pour renvoyer un âge (non corrélé au modèle fantôme)</p>
         <ul>
-            <li>"Quel âge avez-vous ?"</li>
-            <li>"Êtes-vous un enfant ?"</li>
-            <li>"Êtes-vous vieux ?""</li>
-            <li>"Êtes-vous jeune ?"</li>
+            <li>"Quel âge as-tu ?"</li>
+            <li>"Es-tu un enfant ?"</li>
+            <li>"Es-tu vieux ?""</li>
+            <li>"Es-tu jeune ?"</li>
         </ul>
         Réponses :
         <ul>
