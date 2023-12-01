@@ -18,21 +18,9 @@ function heartbeat(){
     }
 }
 
-function checkParams(){
-    return new Promise((resolve, reject) => {
-        params = new URL(window.location.href).searchParams
-
-        if (params.get('journal')){
-            setCookie("room_id",params.get('journal'),1)
-            window.location.href = window.location.href.split("?")[0]
-        }
-
-        resolve("URL parsed")
-    })
-}
-
 function loadAllAndConnect(){
     let loadZN = new Promise((resolve, reject) => {
+        znid = getCookie("znid")
         if(znid && znid!="no-connection-to-server"){
             $("#session").text(znid)
             try {
@@ -55,12 +43,6 @@ function loadAllAndConnect(){
             resolve("Loaded existing session")
         }
         else{
-            var id;
-            try{
-                id = JSON.parse(getCookie("discord_link"))['id'];
-            } catch(Error) {
-                id = false;
-            }
             fetch(`https://zero-network.net/zn/?lang=${lang}`,{headers:{Accept:"application/json"},signal: AbortSignal.timeout(10000)})
             .then(e=>e.json())
             .then(e => {
@@ -147,13 +129,19 @@ function loadAllAndConnect(){
         
             for (const [key, value] of Object.entries(start_state["ghosts"])){ 
                 if (value == 0){
-                    fade(document.getElementById(key));
+                    fade(document.getElementById(key), true, true);
+                }
+                else if (value == -2){
+                    died(document.getElementById(key), true, true);
                 }
                 else if (value == -1){
-                    remove(document.getElementById(key));
+                    remove(document.getElementById(key), true, true);
                 }
                 else if (value == 2){
-                    select(document.getElementById(key));
+                    select(document.getElementById(key), true, true);
+                }
+                else if (value == 3){
+                    guess(document.getElementById(key), true, true);
                 }
             }
             for (const [key, value] of Object.entries(start_state["evidence"])){ 

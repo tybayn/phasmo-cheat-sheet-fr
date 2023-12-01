@@ -95,10 +95,10 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         position: absolute;
         transform: rotate(-90deg);
         height: 15px;
-        width: 90px;
+        width: 104px;
         text-align: center;
-        top: 44px;
-        right: -64px;
+        top: 50px;
+        right: -71px;
         background-color: #313248;
         padding: 5px;
         cursor: pointer;
@@ -195,7 +195,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         height: 16px;
         width: 135px;
         text-align: center;
-        top: 175px;
+        top: 187px;
         right: -86px;
         background-color: #313248;
         padding: 5px;
@@ -228,7 +228,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         height: 15px;
         width: 90px;
         text-align: center;
-        top: 307px;
+        top: 318px;
         right: -64px;
         background-color: #313248;
         padding: 5px;
@@ -238,7 +238,19 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         border-width: 0px 1px 1px 1px;
         border-radius: 0px 0px 5px 5px;
     }
-    #maps_box {
+
+    #guide_tab_footstep{
+        background-image: url(../imgs/footsteps-bpm.png);
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        transform: rotate(90deg);
+        position: absolute;
+        bottom: 2px;
+        left: 5px;
+    }
+
+    #maps_box{
         position: fixed;
         top: 0;
         z-index: 1;
@@ -262,7 +274,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         height: 15px;
         width: 90px;
         text-align: center;
-        top: 416px;
+        top: 426px;
         right: -64px;
         background-color: #313248;
         padding: 5px;
@@ -340,6 +352,17 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         margin-bottom: 13px;
         border-radius: 5px;
     }
+
+    .less_pad{
+        padding-top: 0px !important;
+    }
+
+    .settings_check{
+        margin-left: 0 !important;
+        height: 10px;
+        cursor: pointer;
+    }
+
     #news_box .info_block {
         display: flex;
         flex-direction: column;
@@ -692,7 +715,12 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         border-radius: 5px;
         padding: 2px 4px 10px 4px;
     }
-    .modifier {
+
+    .timer_block{
+        width: 100%;
+    }
+
+    .modifier{
         grid-column: 1;
         grid-row: 4;
         font-size: 30px;
@@ -739,6 +767,8 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         font-size: 10px;
         padding-top: 10px;
         margin: 0px 10px;
+        display: flex;
+        align-items: center;
     }
     .modifier_note_2 {
         color: #ffffffa0;
@@ -925,7 +955,12 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
     .journal_link {
         position: relative;
     }
-    .journal_link_buttons {
+
+    .vc_link{
+        width:176px; margin-top: 10px;
+    }
+
+    .journal_link_buttons{
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
@@ -1058,7 +1093,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         color: rgb(145, 145, 145);
         font-size: 10px;
         display: inline-block;
-        left: 9px;
+        left: 13px;
         bottom: -6px;
         position: absolute;
     }
@@ -1066,7 +1101,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         color: rgb(145, 145, 145);
         font-size: 10px;
         display: inline-block;
-        left: 71.666%;
+        left: 74.666%;
         bottom: -6px;
         position: absolute;
     }
@@ -1125,7 +1160,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         color: rgb(145, 145, 145);
         font-size: 10px;
         display: inline-block;
-        left: 25%;
+        left: 29%;
         bottom: -6px;
         position: absolute;
     }
@@ -1147,7 +1182,12 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         align-items: center;
         justify-content: space-between;
     }
-    #tap_viz {
+
+    #tap:hover{
+        background-color: #ffffff60;
+    }
+
+    #tap_viz{
         color: #ffffff52;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -1374,7 +1414,28 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         cursor: pointer;
         z-index: 100;
     }
-    .ghost_card {
+
+    .standard_reset:hover{
+        background-color: #ffffff60 !important;
+    }
+
+    .reset_pulse{
+        padding-top:5px !important;
+        animation: blink 0.5s;
+        animation-iteration-count: 3;
+    }
+
+    @keyframes blink { 
+        50% { background-color:rgba(75, 0, 0, 0.705);}  
+    }
+
+    .reset_note{
+        color: #ffffffa0;
+        padding-top:3px;
+        font-size: 12px;
+    }
+
+    .ghost_card{
         display: grid;
         width: 510px;
         border-radius: 5px;
@@ -1520,88 +1581,25 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         grid-row: 1 / 4;
         display: flex;
         align-content: center;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: flex-end;
-        padding-right: 3px;
+        padding-right: 5px;
         flex-direction: column;
     }
-    .ghost_clear .icon {
-        display: inline-block;
-        width: 25px;
-        height: 25px;
-        -ms-transform: rotate(45deg);
-        /* IE 9 */
-        -webkit-transform: rotate(45deg);
-        /* Chrome, Safari, Opera */
-        transform: rotate(45deg);
+
+    .card_icon{
+        width: 19px;
         cursor: pointer;
     }
-    .ghost_clear .icon:before {
-        content: "";
-        position: absolute;
-        width: 3px;
-        height: 17px;
-        background-color: rgb(29, 29, 29);
-        left: 11px;
-        top: 4px;
-    }
-    .ghost_clear .icon:after {
-        content: "";
-        position: absolute;
-        width: 17px;
-        height: 3px;
-        background-color: rgb(29, 29, 29);
-        left: 4px;
-        top: 11px;
-    }
-    .ghost_clear .check {
-        display: inline-block;
-        width: 25px;
-        height: 25px;
-        -ms-transform: rotate(45deg);
-        /* IE 9 */
-        -webkit-transform: rotate(45deg);
-        /* Chrome, Safari, Opera */
-        transform: rotate(45deg);
-        cursor: pointer;
-    }
-    .ghost_clear .check:before {
-        content: "";
-        position: absolute;
-        width: 3px;
-        height: 13px;
-        background-color: rgb(29, 29, 29);
-        left: 15px;
-        top: 5px;
-    }
-    .ghost_clear .check:after {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 3px;
-        background-color: rgb(29, 29, 29);
-        left: 10px;
-        top: 16px;
-    }
-    .space {
-        height: 30px;
+    
+    .space{
+        height:30px;
     }
 }
 
-.ghost_clear .icon:hover:before {
-    background-color: #ccc;
-}
 
-.ghost_clear .icon:hover:after {
-    background-color: #ccc;
-}
-
-.ghost_clear .check:hover:before {
-    background-color: #ccc;
-}
-
-.ghost_clear .check:hover:after {
-    background-color: #ccc;
+.card_icon:hover{
+    filter: invert(1);
 }
 
 .sg {
@@ -1654,6 +1652,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         letter-spacing: 1.5;
         display: grid;
         justify-content: start;
+        align-items: center;
     }
     #checkbox {
         grid-column: 1;
@@ -1810,9 +1809,72 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
     #eye img:hover{
         filter: invert(0);
     }
+
+    #domovoi{
+        position: fixed;
+        bottom: 40px;
+        right: 10px;
+        display: flex;
+        animation: domovoi-float 2s cubic-bezier(0.1, -0.6, 0.2, 0) infinite;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 50;
+    }
+
+    .domovoi-flip{
+        align-items: flex-start !important;
+        left: 205px !important;
+        animation: domovoi-float-flip 2s cubic-bezier(0.1, -0.6, 0.2, 0) infinite !important;
+    }
+
+
+    @keyframes domovoi-float {
+        0% {
+            bottom: 40px;
+        }
+        50% {
+            bottom: 44px;
+        }
+        100% {
+            bottom: 40px;
+        }
+    }
+
+    @keyframes domovoi-float-flip {
+        0% {
+            bottom: 8px;
+        }
+        50% {
+            bottom: 12px;
+        }
+        100% {
+            bottom: 8px;
+        }
+    }
+
+    #domovoi-text{
+        font-family: "Yahfie";
+        font-size: 16px;
+        letter-spacing: 2;
+        font-weight: bold;
+        border-radius: 20px;
+        padding: 10px;
+        background-image: radial-gradient(#ffffff, #ffffff77);
+        box-shadow: 0px 0px 10px 5px rgb(0 0 0);
+    }
+
+    #domovoi-img{
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .domovoi-img-flip{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
 }
 
-.label {
+.label{
     grid-column: 2/6;
     text-align: left;
     padding-top: 2px;
@@ -1846,13 +1908,16 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
     transform: scale(1.1);
 }
 
-#reset:hover,
-#tap:hover {
-    background-color: #ffffff60;
-}
-
 .selected {
     background-color: #353 !important;
+}
+
+.guessed {
+    background-color: rgb(89, 85, 34) !important;
+}
+
+.died {
+    background-color: rgb(71, 31, 31) !important;
 }
 
 .dot-flashing {
