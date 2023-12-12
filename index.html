@@ -310,6 +310,22 @@
         </div>
     </div>
 
+    <div id="lang_blackout" style="display: none;"></div>
+    <div id="language_box" style="right:-176px;">
+        <div id="language_tab" onclick="showLanguage();">
+            <img src="imgs/langauge.png" width="24px" id="feed_icon_img"/>
+        </div>
+        <span class="icon" onclick="showLanguage()"></span>
+        <div class="settings_title yfont white">
+            <select name="language" id="language" class="language" onchange="loadLanguage();">
+                <option value="en">English 🇺🇸 / 🇬🇧 / 🇦🇺</option>
+                <option value="fr" selected>French 🇫🇷</option>
+                <option value="ru">Russian 🇷🇺</option>
+                <option value="tr">Turkish 🇹🇷</option>
+            </select>
+        </div>
+    </div>
+
     <div class="data">
         <div class="menu">
             <div class="tools-filter-buttons">
