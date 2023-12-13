@@ -305,7 +305,7 @@ function link_link() {
                 if (incoming_state['action'].toUpperCase() == "LINKED") {
                     document.getElementById("link_id_note").innerText = `STATUT: Lié`
                     document.getElementById("dllink_status").className = "connected"
-                dlws.send('{"action":"LINK"}')
+                    dlws.send('{"action":"LINK"}')
                     send_bpm_link("-","-",["50%","75%","100%","125%","150%"][parseInt($("#ghost_modifier_speed").val())])
                     send_timer_link("TIMER_VAL","0:00")
                     send_timer_link("COOLDOWN_VAL","0:00")

@@ -5,6 +5,7 @@ const all_evidence = ["DOTs", "EMF 5", "Ultraviolet", "Glaciale", "Orbe", "Écri
 const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "Djinn", "Cauchemar", "Revenant", "Ombre", "Démon", "Yurei", "Oni", "Yokaï", "Hantu", "Goryo", "Myling", "Onryo", "Les Jumeaux", "Raiju", "Obake", "Le Mimic", "Moroï", "Deogen", "Thayé"]
 const all_speed = ["Lente", "Normal", "Rapide"]
 const all_sanity = ["Tard", "Average", "Tôt", "Trèstôt"]
+let bpm_list = []
 
 var state = {
     "evidence": {},
