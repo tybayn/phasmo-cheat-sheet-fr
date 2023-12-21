@@ -43,6 +43,8 @@ function startFlicker(elem) {
     let vis_max = ghost_flicker_data[ghost].vis_max
     let invis_min = ghost_flicker_data[ghost].invis_min
     let invis_max = ghost_flicker_data[ghost].invis_max
+    let flicker_min = ghost_flicker_data[ghost].flicker_min
+    let flicker_max = ghost_flicker_data[ghost].flicker_max
 
     function flickerOn() {
         if (flickering) {
