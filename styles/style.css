@@ -822,6 +822,11 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         color: #ffffffa0;
         font-size: 10px;
     }
+    .modifier_note_3{
+        color: #a9a9a9a0;
+        font-size: 8px;
+        padding: 2px;
+    }
     .timer_div {
         width: 100%;
     }
@@ -1239,10 +1244,11 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         color: #ffffff52;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 12px;
-        width: 90%;
+        width: 65%;
         height: 18px;
         overflow: hidden;
         margin-top: -10px;
+        margin-bottom: 5px;
     }
     .tap_note {
         color: #ffffffa0;
@@ -1256,6 +1262,19 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         font-size: 12px;
         text-align: center;
         width: 30px;
+    }
+    .legend{
+        display: flex;
+        margin-bottom: 7px;
+    }
+
+    .legend_box{
+        width: 30px;
+        height: 15px;
+        background-color: #3b3c57;
+        border: solid 1px white;
+        border-radius: 3px;
+        margin-right: 7px;
     }
     .modifier_volume {
         font-size: 18px;

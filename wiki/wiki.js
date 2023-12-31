@@ -15,22 +15,36 @@ function accordian(elem) {
 // -----------------------------------------------
 let ghost_flicker_data = {
     "Normal": {
-        "vis_max": 0.3,
-        "vis_min": 0.08,
-        "invis_max": 1.0,
-        "invis_min": 0.3
+        "vis_max":0.30,
+        "vis_min":0.08,
+        "invis_max":0.92,
+        "invis_min":0.10,
+        "flicker_max":1.00,
+        "flicker_min":0.30
     },
     "Fantôme": {
-        "vis_max": 0.3,
-        "vis_min": 0.08,
-        "invis_max": 2.0,
-        "invis_min": 1.0
+        "vis_max":0.30,
+        "vis_min":0.08,
+        "invis_max":1.92,
+        "invis_min":0.70,
+        "flicker_max":2.00,
+        "flicker_min":1.00
     },
     "Oni": {
-        "vis_max": 1.0,
-        "vis_min": 0.3,
-        "invis_max": 0.3,
-        "invis_min": 0.08
+        "vis_max":0.50,
+        "vis_min":0.02,
+        "invis_max":0.50,
+        "invis_min":0.01,
+        "flicker_max":1.00,
+        "flicker_min":0.30
+    },
+    "Deogen":{
+        "vis_max":0.30,
+        "vis_min":0.20,
+        "invis_max":0.40,
+        "invis_min":0.01,
+        "flicker_max":0.60,
+        "flicker_min":0.30
     }
 }
 
@@ -54,11 +68,13 @@ function startFlicker(elem) {
         }
     }
 
-    function flickerOff() {
-        if (flickering) {
+    function flickerOff(on) {
+        if (flickering){
             $(obj).hide()
-            r = Math.floor((Math.random() * (invis_max - invis_min) + invis_min) * 1000)
-            setTimeout(flickerOn, r)
+            t_max = Math.min(flicker_max - on, invis_max)
+            t_min = Math.max(flicker_min - on, invis_min)
+            r = Math.floor((Math.random() * (t_max - t_min) + t_min) * 1000)
+            setTimeout(flickerOn,r)
         }
     }
 
@@ -75,5 +91,6 @@ function setFlicker() {
         startFlicker(document.getElementById("phantom-flicker"))
         startFlicker(document.getElementById("normal-flicker"))
         startFlicker(document.getElementById("oni-flicker"))
+        // startFlicker(document.getElementById("deogen-flicker"))
     }
 }

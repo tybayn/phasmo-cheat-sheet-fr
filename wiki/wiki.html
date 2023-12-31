@@ -13,230 +13,295 @@
 <div class="wiki_title accordian" onclick="accordian(this)">Chasses<div id="hunts_tab_footstep" style="display: none;"></div>
 </div>
 <div class="wiki_details" style="height: 0px;">
-    <h3>Vacillement</h3>
-    <div class="text">Au cours d'une chasse, les entités apparaîtront et disparaîtront, alternant entre visible et invisible plusieurs fois toutes les quelques secondes. Il y a quelques entités qui peuvent être identifiés par leur clignottement pendant une chasse : (1) un Oni sera plus visible pendant une chasse et (2) le Fantôme sera invisible pendant de plus longues périodes.</div>
-    <div class="text">Ci-dessous, vous pouvez voir des exemples de synchronisation de clignottement de Fantôme, Oni et de toutes les autres entités.</div>
-    <div class="wiki-flex">
-        <div id="phantom-flicker" class="wiki-img-block">
-            <div id="flicker-ghost-name">Fantôme</div>
-            <div id="ghost-flicker">
-                <img class="flicker-img" src="imgs/flicker_ghost.png">
+    <div class="wiki_title accordian" onclick="accordian(this)">Vacillement</div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">Au cours d'une chasse, les entités apparaîtront et disparaîtront, alternant entre visible et invisible plusieurs fois toutes les quelques secondes. Il y a quelques entités qui peuvent être identifiés par leur clignottement pendant une chasse : (1) un Oni sera plus visible pendant une chasse et (2) le Fantôme sera invisible pendant de plus longues périodes.</div>
+        <div class="text">Ci-dessous, vous pouvez voir des exemples de synchronisation de clignottement de Fantôme, Oni et de toutes les autres entités.</div>
+        <div class="wiki-flex">
+            <div id="phantom-flicker" class="wiki-img-block">
+                <div id="flicker-ghost-name">Fantôme</div>
+                <div id="ghost-flicker">
+                    <img class="flicker-img" src="imgs/flicker_ghost.png">
+                </div>
             </div>
-        </div>
-        <div id="normal-flicker" class="wiki-img-block">
-            <div id="flicker-ghost-name">Normal</div>
-            <div id="ghost-flicker">
-                <img class="flicker-img" src="imgs/flicker_ghost.png">
+            <div id="normal-flicker" class="wiki-img-block">
+                <div id="flicker-ghost-name">Normal</div>
+                <div id="ghost-flicker">
+                    <img class="flicker-img" src="imgs/flicker_ghost.png">
+                </div>
             </div>
-        </div>
-        <div id="oni-flicker" class="wiki-img-block">
-            <div id="flicker-ghost-name">Oni</div>
-            <div id="ghost-flicker">
-                <img class="flicker-img" src="imgs/flicker_ghost.png">
+            <div id="oni-flicker" class="wiki-img-block">
+                <div id="flicker-ghost-name">Oni</div>
+                <div id="ghost-flicker">
+                    <img class="flicker-img" src="imgs/flicker_ghost.png">
+                </div>
             </div>
         </div>
     </div>
-    <hr>
-    <h3>Variations de vitesse de l'entité</h3>
-    <div class="text">De nombreux fantômes peuvent atteindre différentes vitesses. Celles-ci dépendent généralement d'un autre facteur (tel que la santé mentale ou la température). La vitesse sera alors modifiée comme indiqué dans ces tableaux.</div>
+    <div class="wiki_title accordian" onclick="accordian(this)">Variations de vitesse de l'entité<div id="hunts_tab_indent_footstep" style="display: none;"></div></div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">De nombreux fantômes peuvent atteindre différentes vitesses. Celles-ci dépendent généralement d'un autre facteur (tel que la santé mentale ou la température). La vitesse sera alors modifiée comme indiqué dans ces tableaux.</div>
 
-    <h4>Vitesse de l'Hantu</h4>
-    <table id="hantu_speed_breakdown">
-        <thead>
+        <h4>Vitesse de l'Hantu</h4>
+        <table id="hantu_speed_breakdown">
+            <thead>
+                <tr>
+                    <th>Temp (°C)</th>
+                    <th>Temp (°F)</th>
+                    <th>Vitesse</th>
+                    <th>Exemple</th>
+                </tr>
+            </thead>
             <tr>
-                <th>Temp (°C)</th>
-                <th>Temp (°F)</th>
-                <th>Vitesse</th>
-                <th>Exemple</th>
+                <td>&gt;15°C</td>
+                <td>&gt;59°F</td>
+                <td class="hantu_speed_item">1.4 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.4,'hantu-s1');">&#128266;</span></td>
             </tr>
-        </thead>
-        <tr>
-            <td>&gt;15°C</td>
-            <td>&gt;59°F</td>
-            <td class="hantu_speed_item">1.4 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.4,'hantu-s1');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>12 - 15°C</td>
-            <td>54 - 59°F</td>
-            <td class="hantu_speed_item">1.75 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.75,'hantu-s2');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>9 - 12°C</td>
-            <td>48 - 54°F</td>
-            <td class="hantu_speed_item">2.1 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.1,'hantu-s3');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>6 - 9°C</td>
-            <td>43 - 48°F</td>
-            <td class="hantu_speed_item">2.3 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.3,'hantu-s4');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>3 - 6°C</td>
-            <td>37 - 43°F</td>
-            <td class="hantu_speed_item">2.4 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.4,'hantu-s5');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>0 - 3°C</td>
-            <td>32 - 37°F</td>
-            <td class="hantu_speed_item">2.5 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.5,'hantu-s6');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>&lt;0°C</td>
-            <td>&lt;32°F</td>
-            <td class="hantu_speed_item">2.7 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.7,'hantu-s7');">&#128266;</span></td>
-        </tr>
-    </table>
-
-    <h4>Vitesse du Moroï</h4>
-    <table id="moroi_speed_breakdown">
-        <thead>
             <tr>
-                <th>Santé mentale moyenne</th>
-                <th>Vitesse</th>
-                <th>Exemple</th>
+                <td>12 - 15°C</td>
+                <td>54 - 59°F</td>
+                <td class="hantu_speed_item">1.75 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.75,'hantu-s2');">&#128266;</span></td>
             </tr>
-        </thead>
-        <tr>
-            <td>0 - 5%</td>
-            <td class="moroi_speed_item">2.25 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.25,'moroi-s1');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>5 - 10%</td>
-            <td class="moroi_speed_item">2.164 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.164,'moroi-s2');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>10 - 15%</td>
-            <td class="moroi_speed_item">2.081 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.081,'moroi-s3');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>15 - 20%</td>
-            <td class="moroi_speed_item">1.998 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.998,'moroi-s4');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>20 - 25%</td>
-            <td class="moroi_speed_item">1.915 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.915,'moroi-s5');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>25 - 30%</td>
-            <td class="moroi_speed_item">1.832 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.832,'moroi-s6');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>30 - 35%</td>
-            <td class="moroi_speed_item">1.749 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.749,'moroi-s7');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>35 - 40%</td>
-            <td class="moroi_speed_item">1.66 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.66,'moroi-s8');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>40 - 45%</td>
-            <td class="moroi_speed_item">1.583 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.583,'moroi-s9');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>&gt;45%</td>
-            <td class="moroi_speed_item">1.5 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.5,'moroi-s10');">&#128266;</span></td>
-        </tr>
-
-    </table>
-
-    <h4>Vitesse du Thayé</h4>
-    <table id="thaye_speed_breakdown">
-        <thead>
             <tr>
-                <th>Cycles de vieillissement</th>
-                <th>Temps proche du fantôme</th>
-                <th style="width: 25%;">Vitesse</th>
-                <th style="width: 25%;">Exemple</th>
+                <td>9 - 12°C</td>
+                <td>48 - 54°F</td>
+                <td class="hantu_speed_item">2.1 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.1,'hantu-s3');">&#128266;</span></td>
             </tr>
-        </thead>
-        <tr>
-            <td>+0</td>
-            <td>0min</td>
-            <td class="thaye_speed_item">2.7 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.7,'thaye-s1');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+1</td>
-            <td>~ 1 - 2min</td>
-            <td class="thaye_speed_item">2.525 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.525,'thaye-s2');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+2</td>
-            <td>~ 2 - 4min</td>
-            <td class="thaye_speed_item">2.35 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.35,'thaye-s3');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+3</td>
-            <td>~ 3 - 6min</td>
-            <td class="thaye_speed_item">2.175 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.175,'thaye-s4');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+4</td>
-            <td>~ 4 - 8min</td>
-            <td class="thaye_speed_item">2.0 m/s</td>
-            <td><span class="sound" onclick="toggleSound(2.0,'thaye-s5');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+5</td>
-            <td>~ 5 - 10min</td>
-            <td class="thaye_speed_item">1.825 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.825,'thaye-s6');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+6</td>
-            <td>~ 6 - 12min</td>
-            <td class="thaye_speed_item">1.65m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.65,'thaye-s7');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+7</td>
-            <td>~ 7 - 14min</td>
-            <td class="thaye_speed_item">1.475 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.475,'thaye-s8');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+8</td>
-            <td>~ 8 - 16min</td>
-            <td class="thaye_speed_item">1.3 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.3,'thaye-s9');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+9</td>
-            <td>~ 9 - 18min</td>
-            <td class="thaye_speed_item">1.125 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.125,'thaye-s10');">&#128266;</span></td>
-        </tr>
-        <tr>
-            <td>+10</td>
-            <td>~ 10 - 20min</td>
-            <td class="thaye_speed_item">1.0 m/s</td>
-            <td><span class="sound" onclick="toggleSound(1.0,'thaye-s11');">&#128266;</span></td>
-        </tr>
-    </table>
-    <hr>
-    <h3>Portée de l'entité</h3>
-    <div class="text">Lors d'une chasse, de nombreux fantômes ont des comportements différents selon la distance qui les sépare du joueur. Ce qui suit montre un rayon de base autour du joueur pour de nombreux fantômes et leurs capacités. (illustré sur Sunny Meadows)</div>
-    <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/hunt_ranges.png">
+            <tr>
+                <td>6 - 9°C</td>
+                <td>43 - 48°F</td>
+                <td class="hantu_speed_item">2.3 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.3,'hantu-s4');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>3 - 6°C</td>
+                <td>37 - 43°F</td>
+                <td class="hantu_speed_item">2.4 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.4,'hantu-s5');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>0 - 3°C</td>
+                <td>32 - 37°F</td>
+                <td class="hantu_speed_item">2.5 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.5,'hantu-s6');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>&lt;0°C</td>
+                <td>&lt;32°F</td>
+                <td class="hantu_speed_item">2.7 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.7,'hantu-s7');">&#128266;</span></td>
+            </tr>
+        </table>
+
+        <h4>Vitesse du Moroï</h4>
+        <table id="moroi_speed_breakdown">
+            <thead>
+                <tr>
+                    <th>Santé mentale moyenne</th>
+                    <th>Vitesse</th>
+                    <th>Exemple</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>0 - 5%</td>
+                <td class="moroi_speed_item">2.25 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.25,'moroi-s1');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>5 - 10%</td>
+                <td class="moroi_speed_item">2.164 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.164,'moroi-s2');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>10 - 15%</td>
+                <td class="moroi_speed_item">2.081 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.081,'moroi-s3');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>15 - 20%</td>
+                <td class="moroi_speed_item">1.998 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.998,'moroi-s4');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>20 - 25%</td>
+                <td class="moroi_speed_item">1.915 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.915,'moroi-s5');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>25 - 30%</td>
+                <td class="moroi_speed_item">1.832 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.832,'moroi-s6');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>30 - 35%</td>
+                <td class="moroi_speed_item">1.749 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.749,'moroi-s7');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>35 - 40%</td>
+                <td class="moroi_speed_item">1.66 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.66,'moroi-s8');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>40 - 45%</td>
+                <td class="moroi_speed_item">1.583 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.583,'moroi-s9');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>&gt;45%</td>
+                <td class="moroi_speed_item">1.5 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.5,'moroi-s10');">&#128266;</span></td>
+            </tr>
+
+        </table>
+
+        <h4>Vitesse du Thayé</h4>
+        <table id="thaye_speed_breakdown">
+            <thead>
+                <tr>
+                    <th>Cycles de vieillissement</th>
+                    <th>Temps proche du fantôme</th>
+                    <th style="width: 25%;">Vitesse</th>
+                    <th style="width: 25%;">Exemple</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>+0</td>
+                <td>0min</td>
+                <td class="thaye_speed_item">2.7 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.7,'thaye-s1');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+1</td>
+                <td>~ 1 - 2min</td>
+                <td class="thaye_speed_item">2.525 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.525,'thaye-s2');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+2</td>
+                <td>~ 2 - 4min</td>
+                <td class="thaye_speed_item">2.35 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.35,'thaye-s3');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+3</td>
+                <td>~ 3 - 6min</td>
+                <td class="thaye_speed_item">2.175 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.175,'thaye-s4');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+4</td>
+                <td>~ 4 - 8min</td>
+                <td class="thaye_speed_item">2.0 m/s</td>
+                <td><span class="sound" onclick="toggleSound(2.0,'thaye-s5');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+5</td>
+                <td>~ 5 - 10min</td>
+                <td class="thaye_speed_item">1.825 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.825,'thaye-s6');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+6</td>
+                <td>~ 6 - 12min</td>
+                <td class="thaye_speed_item">1.65m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.65,'thaye-s7');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+7</td>
+                <td>~ 7 - 14min</td>
+                <td class="thaye_speed_item">1.475 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.475,'thaye-s8');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+8</td>
+                <td>~ 8 - 16min</td>
+                <td class="thaye_speed_item">1.3 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.3,'thaye-s9');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+9</td>
+                <td>~ 9 - 18min</td>
+                <td class="thaye_speed_item">1.125 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.125,'thaye-s10');">&#128266;</span></td>
+            </tr>
+            <tr>
+                <td>+10</td>
+                <td>~ 10 - 20min</td>
+                <td class="thaye_speed_item">1.0 m/s</td>
+                <td><span class="sound" onclick="toggleSound(1.0,'thaye-s11');">&#128266;</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="wiki_title accordian" onclick="accordian(this)">Portée de l'entité</div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">Lors d'une chasse, de nombreux fantômes ont des comportements différents selon la distance qui les sépare du joueur. Ce qui suit montre un rayon de base autour du joueur pour de nombreux fantômes et leurs capacités. (illustré sur Sunny Meadows)</div>
+        <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/hunt_ranges.png">
+    </div>
+    <div class="wiki_title accordian" onclick="accordian(this)">Vitesse et ligne de vue (LdV)</div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">La plupart des entités augmenteront progressivement leur vitesse lorsqu'un joueur est dans leur ligne de vue (LdV), jusqu'à un maximum de 1,65 fois leur vitesse de base. Après avoir brisé la LdV, l'entité maintiendra la vitesse accrue jusqu'à ce qu'il atteigne la dernière position connue du joueur. Si elle ne voit plus le joueur à ce stade, l'entité perdra très lentement sa vitesse accrue.</div>
+        <div class="text">Lors de l'utilisation de le "Recherche de BPM", l'application générera un tracé des vitesses que vous avez exploitées au fil du temps. De nombreux comportements de chasse différents, y compris la LdV, peuvent être observés à partir de ce graphique, comme indiqué ci-dessous.</div>
+        <div class="text">
+            <b>Standard (avec LdV):</b><br>
+            Un fantôme à vitesse standard chassera à 1,7 m/s. Une fois que l'entité a une LdV avec le joueur (A), sa vitesse augmentera pendant 13 secondes (tant que le joueur est dans la LdV) jusqu'à ce qu'une vitesse maximale de 1,65x la vitesse de base soit atteinte (B).<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_standard_los.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Jes Jumeaux:</b><br>
+            Les Jumeaux se déplacent à des vitesses différentes lorsqu'ils chassent. Le jumeau principal est 10 % plus lent qu'une entité standard, tandis que le jumeau « itinérant » est 10 % plus rapide.<br><br>
+            Le tracé BPM conservera un historique de la chasse précédente qui a été exploitée sous la forme d'une ligne rouge pointillée. En utilisant cette ligne, vous pouvez la chasse précédente à la chasse en cours. Une vitesse de base différente peut indiquer Les Jumeaux.<br><br>
+            In the example below, you can see that the previous hunt was at 1.53m/s while the next hunt was at 1.87m/s.<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_twins.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Raiju:</b><br>
+            Un Raiju se déplace toujours à une vitesse fixe de 2,5 m/s (à 100 % de la vitesse d'entité) lorsqu'il est placé ou tenu à proximité d'un équipement de lecteur électronique actif. Cela se traduit par des zones plates proches de 2,5 m/s interrompant un schéma de chasse par ailleurs standard.<br><br>
+            Dans l'exemple suivant, le Raiju est entré à portée de l'électronique (A) et a immédiatement accéléré jusqu'à ce qu'il en soit hors de portée (B). Le Raiju a ensuite obtenu un LdV (C) et a commencé l'augmentation de vitesse, jusqu'à ce qu'il revienne à portée d'un électronique (D). Une fois qu'il a quitté la portée de l'électronique, la vitesse du Raiju est revenue à celle de son augmentation dans la LdV (E) et a continuée à augmenter jusqu'à ce qu'il atteigne sa vitesse maximale en LdV (F).<br><br>
+            Le plus gros fait du Raiju est constitué de plusieurs points plats à 2,5 m/s (A-B et D-E).<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_raiju.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Revenant:</b><br>
+            Les Revenants ne suivent pas une augmentation standard de la LdV. Au lieu de cela, ils ont une vitesse de base de 1,0 m/s jusqu'à ce qu'ils détectent un joueur (A), que ce soit par la vue, le son ou l'utilisation d'électronique. Ils accéléreront immédiatement jusqu'à 3,0 m/s jusqu'à ce qu'ils ne puissent plus détecter le joueur et aient atteint le dernier emplacement connu du joueur (B). À ce stade, ils diminueront progressivement jusqu’à 1,0 m/s (C).<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_revenant.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Hantu:</b><br>
+            L'Hantu n'a pas d'augmentation de LdV, mais sa vitesse est basée sur la température de la pièce dans laquelle il se trouve actuellement. Cela conduit à des vitesses très variables lorsqu'il chasse <b><i>SI</i></b> il se promène à travers plusieurs pièces ayant différentes températures. Plus un Hantu reste longtemps dans une pièce, plus il fera froid, ce qui affectera sa vitesse.<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_hantu.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Moroï (avec LdV + Enscens):</b><br>
+            La vitesse d'un Moroï dépend de la santé mentale moyenne de l'équipe. À 0% de santé mentale, la vitesse de base d'un Moroï commence à 2,25 m/s jusqu'à ce qu'il ait une LdV (A). Avec 13 secondes de LdV continue, un Moroï peut atteindre une vitesse maximale de 3,71 m/s (D), la vitesse la plus rapide de toutes les entités.<br><br>
+            Un Moroï a également la plus longue période d' « aveuglement » suite à l'utilisation d'un enscens. Si un Moroï a une augmentation de vitesse de LdV lorsqu'il est aveuglé (B), la vitesse diminuera lentement pendant 7,5 secondes au lieu des 5 secondes standard. Une fois l'aveuglement dissipé, si la LdV est retrouvée (C), la vitesse continuera d'augmenter.<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_moroi.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Moroï vs Thayé:</b><br>
+            Les Moroï et Thayé font partie des entités les plus rapides du jeu et sont parfois difficiles à distinguer, mais il y a une différence essentielle : un Thayé n'accélérera jamais avec une LdV.<br><br>
+            Thayé:<br>
+            Les Thayés vieillissent, s'affaiblissent et ralentissent à mesure que les joueurs restent autour d'eux. Le plus jeune Thayé se déplacera toujours à 2,75 m/s à 100 % de vitesse, même dans la LdV, et deviendra plus lent à chaque chasse s'il est exposé aux joueurs.<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_thaye.png" style="max-width: 60%; padding: 10px 0px;"><br>
+            Moroï:<br>
+            Les Moroï sans LdV seront plus lents que les jeunes Thayés, se déplaçant à seulement 2,25 m/s (ligne pointillée), mais ils sont capables d'atteindre une vitesse bien plus rapide que les Thayés en LdV continue (ligne continue).<br>
+            <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/graph_moroi2.png" style="max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b>Le Mimic</b><br>
+            Le Mimic est capable de TOUT modèle de chasse, souvenez-vous-en.
+        </div>
+    </div>
 </div>
 
 <div class="wiki_title accordian" onclick="accordian(this)">Patte de singe</div>

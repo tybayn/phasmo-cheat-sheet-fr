@@ -4,7 +4,7 @@
 
     <link rel="icon" type="image/x-icon" href="https://zero-network.net/phasmophobia/static/imgs/favicon.ico">
     <meta name="Description" content="Le guide non officiel Phasmo est l'aide-mémoire ultime pour le jeu vidéo d'horreur populaire Phasmophobia. Il comprend des fonctionnalités telles que la fréquence des pas, lien avec un journal partagé, lien avec l'application de bureau, et bien plus encore, pour vous aider à mieux réussir cos chasses aux fantômes." />
-    <meta name="viewport" content="user-scalable=no" />
+    <meta name="viewport" content="user-scalable=0" />
     <script>
         AbortSignal.timeout = ms => {
             const controller = new AbortController();
@@ -409,8 +409,18 @@
                         </div>
                         <div id="input_speed">0<br>m/s</div>
                     </button>
+                    <canvas id="bpm_hist" height="85" width="150"></canvas>
                     <div id="tap_viz"></div>
+                    <div class="legend">
+                        <div class="legend_box" style="box-shadow: 0px 0px 4px 1px #dbd994"></div>
+                        <div class="modifier_note_2" style="font-size: 9px !important;">Correspond à la vitesse de base</div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend_box" style="box-shadow: -3px 0px 2px -1px #dbd994;"></div>
+                        <div class="modifier_note_2" style="font-size: 9px !important;">Vitesse de LdV possible</div>
+                    </div>
                     <div class="modifier_note_2">(Appuyer sur 'R' pour réinitialiser)</div>
+                    <div class="modifier_note_3">Voir "Guides >> Chasses >> Vitesse et ligne de vue (LdV)" pour plus d'informations sur la façon de lire le graphique.</div>
                 </div>
             </div>
             <div id="filter-content" class="filter-content">
