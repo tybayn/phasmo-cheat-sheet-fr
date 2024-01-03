@@ -6,6 +6,7 @@ const all_ghosts = ["Esprit", "Spectre", "Fantôme", "Poltergeist", "Banshee", "
 const all_speed = ["Lente", "Normal", "Rapide"]
 const all_sanity = ["Tard", "Average", "Tôt", "Trèstôt"]
 let bpm_list = []
+let bpm_los_list = []
 
 var state = {
     "evidence": {},
