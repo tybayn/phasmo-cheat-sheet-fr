@@ -522,6 +522,7 @@
         grid-row: 2;
         display: grid;
         width:100%;
+        max-height: calc(100vh - 16px);
         grid-template-rows: 60px auto 35px 35px;
         background-color: #313248;
         margin: -8px;

@@ -471,9 +471,7 @@
                 "<Seuil de chasse>",
                 "Peut chasser avec 65% de santé mentale à proximité des équipements de joueur actifs",
                 "<Vitesse de chasse>",
-                "2,5m/s à proximité d'un équipement actif de joueur, 1,7m/s sinon",
-                "<Preuve>",
-                "EMF 5 + Orbe en mode Cauchemar, confirme le Raiju"
+                "2,5m/s à proximité d'un équipement actif de joueur, 1,7m/s sinon"
             ]
         },
         {
@@ -607,13 +605,11 @@
                 "<Seuil de chasse>",
                 "Chasse à 75% à son plus jeune âge, 15% à son plus vielle âge",
                 "<Vitesse de chasse>",
-                "2,75m/s au plus jeune, 1,0 m/s au plus âgé <b>n'accélère pas dans la ligne de vue</b>",
-                "<Preuve>",
-                "Écriture + DOTs en mode Cauchemar, confirme le Thayé"
+                "2,75m/s au plus jeune, 1,0 m/s au plus âgé <b>n'accélère pas dans la ligne de vue</b>"
             ]
         }
     ],
-    "version": "v0.9.3.1",
+    "version": "v0.9.4.0",
     "evidence": [
         "EMF 5",
         "Ultraviolet",

@@ -659,6 +659,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         grid-column: 1;
         display: grid;
         width: 100%;
+        max-height: calc(100vh - 16px);
         grid-template-rows: 40px auto 55px 20px 20px;
         background-color: #313248;
         margin: -8px;
@@ -707,6 +708,7 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         display: grid;
         width: 100%;
         grid-template-rows: 32px min-content 40px auto;
+        overflow-y: auto;
     }
     .spin_hide {
         animation-name: spinhide;
@@ -946,7 +948,17 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         font-size: 12px;
     }
     #modifier_sound_type {
-        display: none;
+        border: none;
+        color: #ccc;
+        box-shadow: inset 0 0 10px #161615;
+        background: rgba(0,0,0,0.25);
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    #modifier_sound_type option{
+        background-color: #161615;
+        cursor: pointer;
     }
     .speed_logic_select {
         font-size: 12;
