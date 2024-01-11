@@ -111,6 +111,9 @@
         color: #E6E6E6;
         font-size: 12px;
         text-align: center;
+    }
+
+    .wiki_min{
         min-width: 65px;
     }
 
@@ -319,6 +322,10 @@
         color: #E6E6E6;
         font-size: 22px;
         text-align: center;
+    }
+
+    .wiki_min{
+        min-width: 65px;
     }
 
     .wiki_details table tr:nth-child(even) {

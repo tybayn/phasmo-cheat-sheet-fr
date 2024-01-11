@@ -46,10 +46,10 @@
         <table id="hantu_speed_breakdown">
             <thead>
                 <tr>
-                    <th>Temp (°C)</th>
-                    <th>Temp (°F)</th>
-                    <th>Vitesse</th>
-                    <th>Exemple</th>
+                    <th class="wiki_min">Temp (°C)</th>
+                    <th class="wiki_min">Temp (°F)</th>
+                    <th class="wiki_min">Vitesse</th>
+                    <th class="wiki_min">Exemple</th>
                 </tr>
             </thead>
             <tr>
@@ -100,9 +100,9 @@
         <table id="moroi_speed_breakdown">
             <thead>
                 <tr>
-                    <th>Santé mentale moyenne</th>
-                    <th>Vitesse</th>
-                    <th>Exemple</th>
+                    <th class="wiki_min">Santé mentale moyenne</th>
+                    <th class="wiki_min">Vitesse</th>
+                    <th class="wiki_min">Exemple</th>
                 </tr>
             </thead>
             <tr>
@@ -162,10 +162,10 @@
         <table id="thaye_speed_breakdown">
             <thead>
                 <tr>
-                    <th>Cycles de vieillissement</th>
-                    <th>Temps proche du fantôme</th>
-                    <th style="width: 25%;">Vitesse</th>
-                    <th style="width: 25%;">Exemple</th>
+                    <th class="wiki_min">Cycles de vieillissement</th>
+                    <th class="wiki_min">Temps proche du fantôme</th>
+                    <th class="wiki_min" style="width: 25%;">Vitesse</th>
+                    <th class="wiki_min" style="width: 25%;">Exemple</th>
                 </tr>
             </thead>
             <tr>
@@ -240,6 +240,74 @@
     <div class="wiki_details" style="height: 0px;">
         <div class="text">Lors d'une chasse, de nombreux fantômes ont des comportements différents selon la distance qui les sépare du joueur. Ce qui suit montre un rayon de base autour du joueur pour de nombreux fantômes et leurs capacités. (illustré sur Sunny Meadows)</div>
         <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/hunt_ranges.png">
+    </div>
+    <div class="wiki_title accordian" onclick="accordian(this)">Durée de la chasse</div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">La durée pendant laquelle un fantôme chasse dépend de nombreux facteurs, notamment le paramètre Durée de chasse et la taille de la carte. Des difficultés plus difficiles et des cartes plus grandes entraînent des temps de chasse plus longs.</div>
+
+        <table id="hantu_speed_breakdown">
+            <thead>
+                <tr>
+                    <th>Difficulté<br><span style="color: #999">(Durée)</span></th>
+                    <th>Petite carte</th>
+                    <th>Moyenne carte</th>
+                    <th>Grande carte</th>
+                    <th>Chasse maudite</th>
+                </tr>
+            </thead>
+            <tr>
+                <td style="text-align: left; width:30%; padding-left: 5px;">- Amateur<br><span style="color: #999">- (Faible)</span></td>
+                <td>15s</td>
+                <td>30s</td>
+                <td>40s</td>
+                <td>+20s</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; width:30%; padding-left: 5px;">- Intermédiaire<br><span style="color: #999">- (Moyen)</span></td>
+                <td>20s</td>
+                <td>40s</td>
+                <td>50s</td>
+                <td>+20s</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; width:30%; padding-left: 5px;">- Professionnel<br>- Cauchemar<br>- Démence<br><span style="color: #999">- (Élevé)</span></td>
+                <td>30s</td>
+                <td>50s</td>
+                <td>60s</td>
+                <td>+20s</td>
+            </tr>
+        </table>
+
+        <h4>Chasses maudites</h4>
+        <div class="text">Utiliser n'importe quel objet maudit pour démarrer une chasse entraînera une chasse maudite qui durera 20 secondes supplémentaires, quelle que soit sa durée d'origine. Toutes les chasses suivant la première chasse maudite sont également maudites.</div>
+
+        <h4>Les morts prolongent les chasses</h4>
+        <div class="text">Ce paramètre prolongera la chasse à chaque mort d'un joueur, ce qui entraînera une augmentation de la durée pour cette chasse uniquement. La durée pendant laquelle une chasse est prolongée dépend également de la difficulté.</div>
+
+        <table id="hantu_speed_breakdown">
+            <thead>
+                <tr>
+                    <th>Difficulté<br><span style="color: #999">(Durée)</span></th>
+                    <th>Les morts prolongent les chasses</th>
+                </tr>
+            </thead>
+            <tr>
+                <td style="text-align: left; width:35%; padding-left: 5px;">- Amateur<br>- Intermédiaire<br> - Professionnel<br><span style="color: #999">- (Désactivé)</span></td>
+                <td>Termine la chasse</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; width:35%; padding-left: 5px;">- Cauchemar<br>- Démence<br><span style="color: #999">- (Faible)</span></td>
+                <td>+15s</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; width:35%; padding-left: 5px;"><span style="color: #999">- (Moyen)</span></td>
+                <td>+25s</td>
+            </tr>
+            <tr>
+                <td style="text-align: left; width:35%; padding-left: 5px;"><span style="color: #999">- (Élevé)</span></td>
+                <td>+35s</td>
+            </tr>
+        </table>
     </div>
     <div class="wiki_title accordian" onclick="accordian(this)">Vitesse et ligne de vue (LdV)</div>
     <div class="wiki_details" style="height: 0px;">
