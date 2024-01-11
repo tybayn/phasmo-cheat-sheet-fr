@@ -114,6 +114,7 @@
             "behavior": [
                 "<On sait>",
                 "Cri spécial à travers le mirco parabolique <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span> ",
+                "La cible perd 15% % de santé mentale si elle touche l'entité pendant un événement fantomatique de chant (la perte standard est de 10 %)",
                 "<Comportements>",
                 "Ne poursuivra que sa cible pendant une chasse (sauf si sa cible est à l'extérieur)",
                 "Se déplace vers sa cible, en laissant un EMF 2",
