@@ -66,6 +66,7 @@
                 "N'apparaît pas sur les photos",
                 "Lors d'un événement ou pendant l'état DOT, prendre une photo fera disparaître le fantôme",
                 "Moins visible lors des chasses (Voir l'onglet 'Guides')",
+                "Draine la santé mentale (0,5 %/s) pendant les événements/chasses lorsque vous êtes visible et à moins de 10 m de l'entité",
                 "<Comportements>",
                 "Peut se déplacer vers un joueur aléatoire, en laissant un EMF 2"
             ]
