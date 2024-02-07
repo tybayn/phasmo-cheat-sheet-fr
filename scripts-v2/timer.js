@@ -108,7 +108,7 @@ function updateMapSize(size){
     document.getElementById("minute_hunt").innerHTML = zeroPad(Math.floor(map_hunt_lengths[map_difficulty][map_size]/60),2)
     document.getElementById("second_hunt").innerHTML = zeroPad(map_hunt_lengths[map_difficulty][map_size] % 60,2)
     document.getElementsByClassName('normal_line')[0].style.left = `${(20/map_hunt_lengths[map_difficulty][map_size])*100}%`
-    document.getElementsByClassName('hunt_size_label')[0].innerText = `Carte: ${["S","M","L"][map_size]}, Chasse: ${["L","M","H"][map_difficulty]}`
+    document.getElementsByClassName('hunt_size_label')[0].innerText = `Carte: ${["S","M","L"][map_size]}, Chasse: ${["F","M","É"][map_difficulty]}`
 }
 
 function updateMapDifficulty(difficulty){
@@ -116,7 +116,7 @@ function updateMapDifficulty(difficulty){
     document.getElementById("minute_hunt").innerHTML = zeroPad(Math.floor(map_hunt_lengths[map_difficulty][map_size]/60),2)
     document.getElementById("second_hunt").innerHTML = zeroPad(map_hunt_lengths[map_difficulty][map_size] % 60,2)
     document.getElementsByClassName('normal_line')[0].style.left = `${(20/map_hunt_lengths[map_difficulty][map_size])*100}%`
-    document.getElementsByClassName('hunt_size_label')[0].innerText = `Carte: ${["S","M","L"][map_size]}, Chasse: ${["L","M","H"][map_difficulty]}`
+    document.getElementsByClassName('hunt_size_label')[0].innerText = `Carte: ${["S","M","L"][map_size]}, Chasse: ${["F","M","É"][map_difficulty]}`
 }
 
 function toggleCountup(){
