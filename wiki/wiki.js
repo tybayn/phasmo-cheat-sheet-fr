@@ -91,6 +91,6 @@ function setFlicker() {
         startFlicker(document.getElementById("phantom-flicker"))
         startFlicker(document.getElementById("normal-flicker"))
         startFlicker(document.getElementById("oni-flicker"))
-        // startFlicker(document.getElementById("deogen-flicker"))
+        startFlicker(document.getElementById("deogen-flicker"))
     }
 }
