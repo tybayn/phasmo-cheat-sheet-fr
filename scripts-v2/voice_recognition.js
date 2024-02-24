@@ -242,6 +242,7 @@ function parse_speech(vtext) {
                     alignToTop: true,
                     behavior: "smooth"
                 })
+            send_ghost_data_link(smallest_ghost)
         }
 
         resetResetButton()
@@ -668,6 +669,8 @@ function parse_speech(vtext) {
             updateMapDifficulty(smallest_num)
             showCustom()
             flashMode()
+            setGhostSpeedFromDifficulty(smallest_num)
+            bpm_calc(true)
             saveSettings()
         }
 
