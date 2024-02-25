@@ -1445,11 +1445,11 @@ screen and (pointer: coarse) and (min-device-width: 601px) {
         margin-right: 7px;
     }
     .modifier_volume {
-        font-size: 18px;
+        font-size: 14px;
         letter-spacing: 1px;
-        padding: 10px 10px 0px 10px;
+        padding: 10px 5px 0px 5px;
         position: relative;
-        width: calc(100% - 42px);
+        width: calc(100% - 10px);
         text-align: center;
     }
     .modifier_volume_labels {
