@@ -117,7 +117,8 @@ function link_room() {
         try {
 
             document.getElementById("settings_status").className = "connected"
-            if (event.data == "-") {
+            if(event.data == "-"){
+                state_received = true
                 return
             }
             var incoming_state = JSON.parse(event.data)
@@ -426,7 +427,7 @@ function link_link() {
 
 function continue_session(){
     if(hasLink){
-        ws.send('{"action":"READY"}')
+        ws.send('{"action":"REQUEST_RESET"}')
         polled = true
         $("#reset").html("En attendant les autres...")
         return false
