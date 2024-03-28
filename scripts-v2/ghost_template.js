@@ -5,7 +5,7 @@ evi_color = {
     "Freezing": "#9ae0f7",
     "Ghost Orbs": "#dbd993",
     "Writing": "#4d8ce3",
-    "Spirit Box": "#d18c5e", 
+    "Spirit Box": "#d18c5e",
 }
 
 evi_icons = {
@@ -15,7 +15,7 @@ evi_icons = {
     "Freezing": "imgs/freezing-icon.png",
     "Ghost Orbs": "imgs/orbs-icon.png",
     "Writing": "imgs/writing-icon.png",
-    "Spirit Box": "imgs/spirit-box-icon.png", 
+    "Spirit Box": "imgs/spirit-box-icon.png",
 }
 
 behavior_titles = {
@@ -27,7 +27,7 @@ behavior_titles = {
 }
 
 class Ghost {
-    constructor(data,evidence){
+    constructor(data, evidence) {
 
         for (var i = 0; i < data.behavior.length; i++) {
             var assets = [...data.behavior[i].matchAll("\{[a-zA-Z0-9:/_.-]+\}")];
