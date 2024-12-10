@@ -224,7 +224,8 @@
             "nightmare_evidence": null,
             "behavior": [
                 "<On sait>",
-                "Ne fait pas d'interactions entraînant des EMF 2, 3 ou 5 avec quelqu'un dans la pièce (sauf Écriture)",
+                "Ne peut pas effectuer d'événements dans la même pièce qu'un joueur (mais peut commencer un événement à l'extérieur de la pièce et se téléporter vers le joueur",
+                "Ne peut pas effectuer d'interactions entraînant un CEM 2, un CEM 3 ou un CEM 5 lorsqu'il se trouve dans la même pièce que le joueur, y compris l'écriture fantôme et les flammes (peut quitter la pièce et interagir avec les objets qui s'y trouvent)",
                 "Ne chasse jamais si quelqu'un est dans la pièce",
                 "<Comportements>",
                 "Fera plus d'événements fantomatiques avec une santé mentale faible",
