@@ -36,13 +36,13 @@
             "evidence": [
                 "EMF 5",
                 "Spirit Box",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
                 "<On sait>",
-                "Le fantôme ne marchera jamais dans le sel, quel que soit son niveau",
-                "N'est pas ralenti par le sel de niveau 3 pendant une chasse",
+                "Le Spectre ne marchera jamais dans le sel, quel que soit son niveau",
+                "N'est pas ralenti par le sel de grade 3 pendant une chasse",
                 "<Comportements>",
                 "Peut se téléporter vers des joueurs aléatoires, laissant un EMF 2 ou 5"
             ]
@@ -61,7 +61,7 @@
             "evidence": [
                 "Spirit Box",
                 "Ultraviolet",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -69,7 +69,7 @@
                 "N'apparaît pas sur les photos",
                 "Lors d'un événement ou pendant l'état DOT, prendre une photo fera disparaître le fantôme",
                 "Moins visible lors des chasses (Voir l'onglet 'Guides')",
-                "Draine la santé mentale (0,5 %/s) pendant les événements/chasses lorsque vous êtes visible et à moins de 10 m de l'entité",
+                "Draine la santé mentale (0,5 %/s) pendant les événements/chasses lorsque vous entendez vos battements de cœur même sans ligne de vue",
                 "<Comportements>",
                 "Peut se déplacer vers un joueur aléatoire, en laissant un EMF 2"
             ]
@@ -114,7 +114,7 @@
             "evidence": [
                 "Ultraviolet",
                 "Ghost Orbs",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -123,9 +123,9 @@
                 "La cible perd 15% % de santé mentale si elle touche l'entité pendant un événement fantomatique de chant (la perte standard est de 10 %)",
                 "<Comportements>",
                 "Ne poursuivra que sa cible pendant une chasse (sauf si sa cible est à l'extérieur)",
-                "Se déplace vers sa cible, en laissant un EMF 2",
-                "Tentera de se déplacer vers sa cible alors qu'il est dans l'état DOT",
-                "Favorise les évênements de chants",
+                "Se déplace vers sa cible, sans laisser d'EMF 2",
+                "Tentera de se déplacer vers sa cible quand il est dans l'état DOTS",
+                "Favorise les événements de chants",
                 "<Seuil de chasse>",
                 "Chasse lorsque la santé mentale de sa cible est de 50 % ou moins (même si la cible est à l'extérieur)"
             ]
@@ -255,7 +255,7 @@
                 "Encenser l'entité empêchera une chasse pendant 60s au lieu des 90s normales",
                 "20s de récupération minimum entre les chasses (la normale est de 25s)",
                 "<Comportements>",
-                "Portée du crucifix augmentée de 50% par niveau (respectivement 4,5m, 6m et 7,5m)",
+                "Portée du crucifix augmentée de 50% par grade (respectivement 4,5m, 6m et 7,5m)",
                 "<Seuil de chasse>",
                 "Capacité à chasser avec n'importe quelle santé mentale, chasse normalement à 70%"
             ]
@@ -274,7 +274,7 @@
             "evidence": [
                 "Ghost Orbs",
                 "Freezing",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -299,7 +299,7 @@
             "evidence": [
                 "EMF 5",
                 "Freezing",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -325,7 +325,7 @@
             "evidence": [
                 "Spirit Box",
                 "Ghost Orbs",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -380,17 +380,17 @@
             "evidence": [
                 "EMF 5",
                 "Ultraviolet",
-                "DOTs"
+                "DOTS"
             ],
-            "nightmare_evidence": "DOTs",
+            "nightmare_evidence": "DOTS",
             "behavior": [
                 "<On sait>",
-                "Les DOTs n'apparaissent que sur la caméra et s'afficheront rarement si le joueur est dans la même pièce",
+                "Les DOTS n'apparaissent que sur la caméra et s'afficheront rarement si le joueur est dans la même pièce",
                 "<Comportements>",
                 "Ne peut pas changer de pièce favorite",
                 "Ne parcourt pas de longues distances",
                 "<Preuve>",
-                "DOTs garantis en mode Cauchemar/Démence"
+                "DOTS garantis en mode Cauchemar/Démence"
             ]
         },
         {
@@ -484,7 +484,7 @@
             "evidence": [
                 "EMF 5",
                 "Ghost Orbs",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
@@ -571,7 +571,7 @@
             "behavior": [
                 "<On sait>",
                 "Lance une malédiction sur le joueur lorsqu'elle est entendue à travers un micro parabolique ou une spirit box, la malédiction fait perdre la santé mentale 2x plus vite",
-                "La durée de cécité de l'encens augmente de 50% par niveau (respectivement 7,5s, 9s et 10,5s)",
+                "La durée de cécité de l'encens augmente de 50% par grade (respectivement 7,5s, 9s et 10,5s)",
                 "<Vitesse de chasse>",
                 "Plus rapide lorsque la santé mentale moyenne est faible, peut atteindre une vitesse de 3,71m/s dans la ligne de vue",
                 "<Preuve>",
@@ -592,7 +592,7 @@
             "evidence": [
                 "Spirit Box",
                 "Writing",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": "Spirit Box",
             "behavior": [
@@ -600,7 +600,7 @@
                 "Respiration lourde à travers la spirit box à moins de 1m de l'entité <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
                 "On ne peut pas se cacher du Deogen",
                 "<Comportements>",
-                "Chance accrue pour les DOTs/Écriture",
+                "Chance accrue pour les DOTS/Écriture",
                 "<Vitesse de chasse>",
                 "3,0m/s à distance, descend à 0,4m/s à proximité du joueur",
                 "<Preuve>",
@@ -621,14 +621,14 @@
             "evidence": [
                 "Ghost Orbs",
                 "Writing",
-                "DOTs"
+                "DOTS"
             ],
             "nightmare_evidence": null,
             "behavior": [
                 "<Comportements>",
                 "L'entité vieillit avec le temps (toutes les 1 à 2min) lorsque le joueur est à proximité",
                 "Plus l'entité est jeune, plus elle sera active",
-                "Chance accrue pour les DOTs/Écriture",
+                "Chance accrue pour les DOTS/Écriture",
                 "<Seuil de chasse>",
                 "Chasse à 75% à son plus jeune âge, 15% à son plus vielle âge",
                 "<Vitesse de chasse>",
@@ -638,12 +638,12 @@
     ],
     "version": "v0.9.6.0",
     "evidence": {
-        "EMF 5":"EMF 5",
-        "Ultraviolet":"Ultraviolet",
-        "Writing":"Écriture",
-        "Freezing":"Glaciale",
-        "DOTs":"DOTs",
-        "Ghost Orbs":"Orbe",
-        "Spirit Box":"Spirit Box"
+        "EMF 5": "EMF 5",
+        "Ultraviolet": "Ultraviolet",
+        "Writing": "Écriture",
+        "Freezing": "Glaciale",
+        "DOTS": "DOTS",
+        "Ghost Orbs": "Orbe",
+        "Spirit Box": "Spirit Box"
     }
 }

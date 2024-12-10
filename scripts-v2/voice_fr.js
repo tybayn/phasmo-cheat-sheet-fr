@@ -6,12 +6,12 @@ const ZNLANG = {
         "fantôme": [],
         "poltergeist": [],
         "banshee": [],
-        "djinn": ["jean","jeans"],
+        "djinn": ["jean", "jeans"],
         "cauchemar": [],
         "revenant": [],
         "ombre": [],
         "démon": [],
-        "yurei": ["yuri","oreille","youri"],
+        "yurei": ["yuri", "oreille", "youri"],
         "oni": ["osny", "oignies"],
         "yokaï": [],
         "hantu": ["en tout"],
@@ -28,7 +28,7 @@ const ZNLANG = {
     },
     "evidence": {
         "emf 5": ["emf", "emf cinq"],
-        "dots": ["DOTs", "dot", "dock", "d'hôtes", "date"],
+        "dots": ["DOTS", "dot", "dock", "d'hôtes", "date"],
         "ultraviolet": ["empreintes"],
         "glaciale": ["température", "froid"],
         "orbe": ["orbe fantomatique"],
@@ -42,7 +42,7 @@ const ZNLANG = {
     },
     "sanity": {
         "tard": [],
-        "average": ["moyenne", "moyen","normal"],
+        "average": ["moyenne", "moyen", "normal"],
         "tôt": ["tout", "d'eau", "taux"],
         "très tôt": []
     }
