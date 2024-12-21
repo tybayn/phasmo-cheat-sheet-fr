@@ -58,7 +58,7 @@ function create_room() {
             "ghost_modifier":parseInt(document.getElementById("ghost_modifier_speed").value)
         }
     }
-    fetch(`https://zero-network.net/phasmophobia/create-room/${znid}?lang=${lang}`, {
+    fetch(`https://zero-network.net/znlink/create-room/${znid}?lang=${lang}`, {
             method: "POST",
             Accept: "application/json",
             body: JSON.stringify(outgoing_state),
@@ -76,7 +76,7 @@ function create_room() {
 }
 
 function create_link() {
-    fetch(`https://zero-network.net/phasmophobia/create-link/${znid}`, {
+    fetch(`https://zero-network.net/znlink/create-link/${znid}`, {
             method: "POST",
             Accept: "application/json",
             signal: AbortSignal.timeout(6000)
